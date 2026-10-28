@@ -1,0 +1,14 @@
+{
+  "name": "neetisis-website",
+  "private": true,
+  "description": "Static landing page for neetisis.com. No build step: the folder is the site.",
+  "scripts": {
+    "assets": "node scripts/build-assets.cjs",
+    "og": "node scripts/build-og.cjs",
+    "serve": "node scripts/serve.cjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.12.0",
+    "sharp": "^0.35.5"
+  }
+}
