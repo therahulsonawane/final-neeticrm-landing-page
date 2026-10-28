@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <script>document.documentElement.classList.add('js')</script>
-    <title>Acceptable Use Policy | NeetiCRM</title>
-    <meta name="description" content="Read the Acceptable Use Policy for NeetiCRM. Learn about our restrictions on spam, automated messaging, and Meta guidelines.">
+    <title>Data Processing Agreement (DPA) | NeetiCRM</title>
+    <meta name="description" content="Read the Data Processing Agreement (DPA) for NeetiCRM. Learn about our data processor terms, sub-processors, and GDPR/DPDP compliance.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#111827">
 
@@ -70,10 +70,10 @@
                     <span aria-hidden="true">&rsaquo;</span>
                     <span>Legal</span>
                     <span aria-hidden="true">&rsaquo;</span>
-                    <span>Acceptable Use Policy</span>
+                    <span>Data Processing Agreement (DPA)</span>
                 </nav>
                 <span class="legal-hero__badge">Legal &amp; Compliance</span>
-                <h1 class="legal-hero__title">Acceptable Use Policy</h1>
+                <h1 class="legal-hero__title">Data Processing Agreement (DPA)</h1>
                 <div class="legal-hero__meta">
                     <span>Last updated: June 26, 2026</span>
                     <span>&bull;</span>
@@ -89,12 +89,14 @@
                 <aside class="legal-sidebar" aria-label="Table of Contents">
                     <p class="legal-sidebar__title">Table of Contents</p>
                     <ol>
-                        <li><a href="#intro">1. Purpose & Scope</a></li>
-                        <li><a href="#anti-spam">2. Anti-Spam & Messaging Rules</a></li>
-                        <li><a href="#content-restrictions">3. Restricted & Prohibited Content</a></li>
-                        <li><a href="#system-abuse">4. System Integrity & Security</a></li>
-                        <li><a href="#meta-compliance">5. Meta & WhatsApp Platform Compliance</a></li>
-                        <li><a href="#enforcement">6. Monitoring & Enforcement</a></li>
+                        <li><a href="#intro">1. Scope & Application</a></li>
+                        <li><a href="#roles">2. Roles of the Parties</a></li>
+                        <li><a href="#obligations">3. Processing & Instructions</a></li>
+                        <li><a href="#security-measures">4. Technical & Organizational Measures</a></li>
+                        <li><a href="#sub-processors">5. Sub-processors</a></li>
+                        <li><a href="#data-breach">6. Security Incident Notification</a></li>
+                        <li><a href="#deletion-return">7. Data Return & Deletion</a></li>
+                        <li><a href="#annex">Annex A: Processing Details</a></li>
 
                     </ol>
                 </aside>
@@ -102,33 +104,23 @@
                 <!-- Legal Policy Text -->
                 <article class="legal-content">
 <section id="intro">
-        <h2>1. Purpose & Scope</h2>
+        <h2>1. Scope & Application</h2>
         <p>
-          This Acceptable Use Policy (&ldquo;AUP&rdquo;) defines the acceptable standards of conduct and content requirements for accessing and using the NeetiCRM platform. This policy is designed to protect our infrastructure, our customers, and their end leads from spam, security threats, and unlawful activities.
+          This Data Processing Agreement (&ldquo;DPA&rdquo;) is entered into by and between NeetiCRM (acting as the &ldquo;Data Processor&rdquo; or &ldquo;Data Processor Entity&rdquo;) and the Customer using the NeetiCRM platform (acting as the &ldquo;Data Fiduciary&rdquo; or &ldquo;Data Controller&rdquo;).
         </p>
         <p>
-          This AUP applies to all users of NeetiCRM, including administrators, sales agents, and automated software workflows. By using the Service, you agree to comply with this policy. Violation of this AUP may lead to immediate suspension or termination of your account without notice or refund.
+          This DPA applies to the processing of Customer Lead Data and personal data synced, uploaded, or generated through the Service. This agreement is integrated into, and forms part of, our Terms of Service, and is designed to ensure compliance with the Digital Personal Data Protection Act, 2023 (India) (&ldquo;DPDP Act&rdquo;), the General Data Protection Regulation (&ldquo;GDPR&rdquo;), and other applicable international data protection frameworks.
         </p>
       </section>
 
-      <section id="anti-spam">
-        <h2>2. Anti-Spam & Messaging Rules</h2>
+      <section id="roles">
+        <h2>2. Roles of the Parties</h2>
         <p>
-          NeetiCRM provides powerful multi-channel automation tools. However, we maintain a zero-tolerance policy for spam and abusive communications.
-        </p>
-        <h3>A. Opt-In & Consent</h3>
-        <p>
-          You must not send marketing messages, broadcast templates, or initiate automated sales calls to any lead unless you have obtained clear, verifiable consent (opt-in) from the recipient as required by applicable laws (such as CAN-SPAM, GDPR, or TRAI regulations in India). 
-        </p>
-        <h3>B. Bulk Unsolicited Messages</h3>
-        <p>
-          You are prohibited from:
+          The parties acknowledge and agree that:
         </p>
         <ul>
-          <li>Uploading lists of scraped contacts, purchased databases, or leads obtained from unverified directory listings.</li>
-          <li>Sending bulk unsolicited marketing messages (&ldquo;broadcast storms&rdquo;) via WhatsApp, SMS, or Email.</li>
-          <li>Tricking recipients by masking your business identity, using spoofed caller IDs, or presenting fraudulent header details.</li>
-          <li>Failing to provide a clear, functional opt-out or unsubscribe option (such as replying &ldquo;STOP&rdquo;) in all outbound automation sequences.</li>
+          <li><strong>Customer</strong> acts as the Data Fiduciary (under the DPDP Act) or Data Controller (under GDPR). The Customer determines the purposes, categories, and lawful basis for collecting and qualifying lead details.</li>
+          <li><strong>NeetiCRM</strong> acts as the Data Processor. NeetiCRM only processes personal data on behalf of and according to the instructions of the Customer, as outlined in the Terms of Service and this DPA.</li>
         </ul>
       </section>
 
@@ -136,69 +128,89 @@
                     <div class="plain-english-box__label">
                         <span aria-hidden="true">&#128161;</span> In Plain English
                     </div>
-                    <p>You cannot buy a list of random phone numbers and bulk-spam them on WhatsApp or SMS using NeetiCRM. You must only message leads who have explicitly requested contact from your business. Always include a way for them to opt-out.</p>
+                    <p>This agreement formalizes our relationship: you are the boss of your data (Controller/Fiduciary) and we are the builders processing it under your exact instructions (Processor). This keeps your business compliant with GDPR and the Indian DPDP Act.</p>
                 </div>
 
-      <section id="content-restrictions">
-        <h2>3. Restricted & Prohibited Content</h2>
+      <section id="obligations">
+        <h2>3. Processing & Instructions</h2>
         <p>
-          You may not use NeetiCRM to transmit, publish, or manage data associated with any of the following restricted categories:
+          NeetiCRM shall:
         </p>
         <ul>
-          <li><strong>Illegal Activity:</strong> Content promoting drug trafficking, human smuggling, money laundering, cyber-crime, or illegal gambling.</li>
-          <li><strong>Exploitative/Adult Content:</strong> Material depicting pornography, sexual services, escort referrals, or child exploitation.</li>
-          <li><strong>Hate & Harassment:</strong> Messages promoting hate speech, cyber-bullying, discrimination, racism, or incitement to violence against protected groups.</li>
-          <li><strong>Phishing & Fraud:</strong> Attempting to gather banking credentials, social security details, passwords, or biometrics from leads via deceptive landing page forms or automated messages.</li>
-          <li><strong>Unregulated Goods:</strong> Marketing of prescription medications, firearms, tobacco products, vaping devices, or unauthorized financial schemes (including get-rich-quick cryptocurrency programs).</li>
+          <li>Process Customer Lead Data solely in accordance with the Customer&rsquo;s written instructions, including configurations set up in the workflow builder, dashboard campaigns, and webhook links.</li>
+          <li>Ensure that all personnel authorized to process lead data are bound by strict obligations of confidentiality.</li>
+          <li>Promptly inform the Customer if, in our opinion, an instruction from the Customer violates applicable data protection regulations.</li>
         </ul>
       </section>
 
-      <section id="system-abuse">
-        <h2>4. System Integrity & Security</h2>
+      <section id="security-measures">
+        <h2>4. Technical & Organizational Measures</h2>
         <p>
-          You agree not to abuse or exploit our server infrastructure:
+          We implement and maintain industry-standard security controls to protect lead data against unauthorized access, loss, alteration, or disclosure. These controls include:
         </p>
         <ul>
-          <li>Do not attempt to bypass platform rate-limiting, execute brute-force attacks on our APIs, or introduce denial-of-service (DoS) requests.</li>
-          <li>Do not upload lead files, custom scripts, or attachments containing malware, spyware, trojans, ransomware, or corrupted archives.</li>
-          <li>Do not attempt to gain unauthorized access to other customers&rsquo; workspaces, databases, or API keys.</li>
-          <li>Do not use web crawlers or scraping utilities to export platform interfaces or system-generated code.</li>
+          <li>Encryption of all personal data at rest (AES-256) and in transit (TLS 1.3).</li>
+          <li>Vulnerability monitoring, firewalls, and regular security patching of our database hosting environments.</li>
+          <li>Access tracking, role-based controls, and security awareness training for NeetiCRM engineering and operations staff.</li>
+          <li>Audit logs that record API queries and administrative changes made inside your workspace.</li>
         </ul>
+      </section>
+
+      <section id="sub-processors">
+        <h2>5. Sub-processors</h2>
+        <p>
+          The Customer grants NeetiCRM general authorization to engage sub-processors to perform infrastructure, hosting, AI transcription, and payment processing tasks.
+        </p>
+        <p>
+          We list all active sub-processors in our Privacy Policy. We ensure that our contracts with sub-processors impose data protection obligations no less restrictive than those set out in this DPA.
+        </p>
+        <p>
+          We will notify you of any additions or replacements to our sub-processor directory via email or system notification. If you have reasonable grounds to object to a new sub-processor on security or data protection grounds, you must notify us in writing within ten (10) days of receiving the update.
+        </p>
       </section>
 
       <div class="plain-english-box">
                     <div class="plain-english-box__label">
                         <span aria-hidden="true">&#128161;</span> In Plain English
                     </div>
-                    <p>Do not try to hack our servers, reverse-engineer the automation engine, upload files containing malware, or sneak into other customers' dashboards. Doing so will result in immediate legal action and account closure.</p>
+                    <p>We use sub-processors (like AWS for database hosting, OpenAI for AI summaries, and Meta for WhatsApp API routing) to run NeetiCRM. We hold them to the same high security standards we hold ourselves.</p>
                 </div>
 
-      <section id="meta-compliance">
-        <h2>5. Meta & WhatsApp Platform Compliance</h2>
+      <section id="data-breach">
+        <h2>6. Security Incident Notification</h2>
         <p>
-          Since NeetiCRM integrates with the WhatsApp Cloud API, you must adhere strictly to Meta&rsquo;s rules:
+          In the event of a confirmed security incident leading to the unauthorized access, disclosure, or loss of Customer Lead Data hosted on NeetiCRM (a &ldquo;Data Breach&rdquo;):
         </p>
         <ul>
-          <li>Your WhatsApp templates must belong to approved categories (Utility, Marketing, Authentication). You may not use templates to bypass Meta&rsquo;s content verification checks.</li>
-          <li>You must monitor your WhatsApp Business Quality Rating. If your quality tier drops to &ldquo;Low&rdquo; or your number is blocked by users, we reserve the right to pause your automated campaigns to protect our shared WhatsApp API nodes.</li>
-          <li>You are responsible for ensuring that your Facebook Business Verification remains active and compliant.</li>
+          <li>We will notify the Customer without undue delay, and in any case within seventy-two (72) hours of confirming the breach.</li>
+          <li>Our notification will describe the nature of the breach, the estimated volume of affected lead records, and our mitigation actions.</li>
+          <li>We will immediately take all necessary measures to secure our infrastructure and prevent further data exposure.</li>
         </ul>
       </section>
 
-      <section id="enforcement">
-        <h2>6. Monitoring & Enforcement</h2>
+      <section id="deletion-return">
+        <h2>7. Data Return & Deletion</h2>
         <p>
-          <strong>Monitoring:</strong> We do not actively read the content of all your private WhatsApp chats or voice calls. However, we use automated anomaly-detection algorithms to monitor message volume spikes, high bounce/error rates, block-list triggers, and system resource usage.
+          During the active subscription term, you may export your lead records, logs, and transcripts from the dashboard at any time.
         </p>
         <p>
-          <strong>Account Action:</strong> If we detect or receive reports of violations of this AUP, we may take immediate action:
+          Upon termination of your account or subscription:
         </p>
         <ul>
-          <li>Issuing a warning warning or forcing a temporary pause on your campaign automations.</li>
-          <li>Rate-limiting or throttling your API throughput.</li>
-          <li>Suspending your account access immediately without liability for data loss or missed leads.</li>
-          <li>Reporting unlawful actions to the appropriate law enforcement authorities in India or your local jurisdiction.</li>
+          <li>NeetiCRM will retain lead data in an archival state for up to ninety (90) days to allow you to renew or download your records.</li>
+          <li>After this retention window, we will permanently delete all Customer Lead Data, call recordings, and chat transcripts from our active databases and servers.</li>
+          <li>Data residing in secure database backups will be systematically overwritten according to our 30-day backup cycle.</li>
         </ul>
+      </section>
+
+      <section id="annex">
+        <h2>Annex A: Details of Processing</h2>
+        <div>
+          <p><strong>A. Categories of Data Subjects:</strong> Customer&rsquo;s prospective leads, contacts, active buyers, and website visitors.</p>
+          <p><strong>B. Categories of Personal Data:</strong> Name, phone numbers, email addresses, pipeline status, AI conversation summaries, transcripts of qualification calls, and chat logs.</p>
+          <p><strong>C. Nature & Purpose of Processing:</strong> Provision of CRM workspace, pipeline tracking, automated lead routing, and multi-channel campaign qualification via voice, SMS, email, and WhatsApp.</p>
+          <p><strong>D. Processing Duration:</strong> For the duration of the Customer&rsquo;s paid subscription, plus up to 90 days of grace period post-termination.</p>
+        </div>
       </section>
                 </article>
             </div>
@@ -229,7 +241,7 @@
                 </div>
                 <div>
                     <p class="footer__h">Company</p>
-                    <a href="sales_hiring/">Careers</a>
+                    <a href="https://wa.me/918329984679?text=Hi%2C%20I%20am%20inquiring%20about%20careers%20at%20Neeti%20CRM" target="_blank" rel="noopener">Careers</a>
                     <a href="https://wa.me/918329984679" data-track="whatsapp" rel="noopener"
                         target="_blank">Contact</a>
                     <a href="https://app.neeticrm.com/login">Sign in</a>
