@@ -41,7 +41,7 @@ FAQ text appears twice: once on the page and once in the `FAQPage` JSON-LD in `<
 
 ## Rebuilding images
 
-Screenshots come from the scrubbed demo-mode captures in `../launch-video/public/captures/` (fake names and numbers only). To refresh them, retake the captures there, then:
+Screenshots come from the scrubbed demo-mode captures in `../launch-video/public/captures-site/` (fake names and numbers only). To refresh them after a UI change, retake them with `node scripts/capture.mjs --set site` in `../launch-video` (shot list: `scripts/shots-site.mjs`; it starts the web and phone demo servers itself), then:
 
 ```bash
 npm install          # sharp + puppeteer-core

@@ -444,4 +444,80 @@
       });
     });
   }
+  /* ---------- Enquiry Form ---------- */
+  var enquiryForm = $('#enquiry-form');
+  var enquirySuccess = $('#enquiry-success');
+  var enquirySuccessText = $('#enquiry-success-text');
+  var enquiryWaContinue = $('#enquiry-wa-continue');
+
+  if (enquiryForm) {
+    enquiryForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Check spam honeypot
+      var botField = enquiryForm.elements['bot-field'];
+      if (botField && botField.value) {
+        enquiryForm.hidden = true;
+        if (enquirySuccess) enquirySuccess.hidden = false;
+        return;
+      }
+
+      var submitBtn = $('.enquiry__submit', enquiryForm);
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending...</span>';
+      }
+
+      var formData = new FormData(enquiryForm);
+      var name = (formData.get('name') || '').toString().trim();
+      var phone = (formData.get('phone') || '').toString().trim();
+      var company = (formData.get('company') || '').toString().trim();
+      var role = (formData.get('role') || '').toString().trim();
+
+      // Track Meta Pixel conversion
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', {
+          content_name: 'Website Enquiry Form',
+          content_category: role || 'Real Estate'
+        });
+      }
+
+      // Prepare URL-encoded body for Netlify Forms
+      var params = new URLSearchParams();
+      formData.forEach(function (val, key) {
+        params.append(key, val);
+      });
+
+      var finish = function () {
+        enquiryForm.hidden = true;
+        if (enquirySuccess) {
+          enquirySuccess.hidden = false;
+          if (name && enquirySuccessText) {
+            var firstName = name.split(' ')[0];
+            enquirySuccessText.textContent = 'Thank you, ' + firstName + '! Our sales intelligence specialist will reach out to you on +91 ' + phone + ' within 15 minutes.';
+          }
+          if (enquiryWaContinue) {
+            var waMsg = 'Hi, I just submitted an enquiry for ' + (company || 'Neeti CRM') + ' (Name: ' + name + ', Phone: +91 ' + phone + '). I would like to discuss my free demo.';
+            enquiryWaContinue.href = 'https://wa.me/918329984679?text=' + encodeURIComponent(waMsg);
+          }
+          enquirySuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      };
+
+      if (window.fetch) {
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString()
+        }).then(function () {
+          finish();
+        }).catch(function (err) {
+          console.warn('Form network submit note:', err);
+          finish();
+        });
+      } else {
+        finish();
+      }
+    });
+  }
 })();

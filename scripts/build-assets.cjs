@@ -1,10 +1,11 @@
 /**
  * Builds every image the site serves from the source captures and brand files.
- * Run from marketing/website:  npm install && npm run assets
+ * Run from this folder:  npm install && npm run assets
  * (or, without installing: NODE_PATH=../../backend/node_modules node scripts/build-assets.cjs)
  *
  * Sources
- *   ../launch-video/public/captures/{web,mobile}/*.png  scrubbed demo-mode screenshots of the real app
+ *   ../launch-video/public/captures-site/{web,mobile}/*.png  scrubbed demo-mode screenshots of the current app UI
+ *     (taken with: cd ../launch-video && node scripts/capture.mjs --set site; shot list in scripts/shots-site.mjs)
  *   ../launch-video/public/brand/light_logo.png         full logo; the N mark is cropped from it
  *   ../../mobile/assets/images/logo-mark.png            rounded app icon (favicons)
  */
@@ -13,24 +14,26 @@ const fs = require('fs');
 const sharp = require('sharp');
 
 const ROOT = path.resolve(__dirname, '..');
-const CAPTURES = path.resolve(ROOT, '../launch-video/public/captures');
+const CAPTURES = path.resolve(ROOT, '../launch-video/public/captures-site');
 const BRAND = path.resolve(ROOT, '../launch-video/public/brand');
 const APP_ICON = path.resolve(ROOT, '../../mobile/assets/images/latest-icon.png');
 const OUT = path.join(ROOT, 'assets/img');
 fs.mkdirSync(OUT, { recursive: true });
 
-// Web captures are 2880x1800 (1440x900 CSS px at 2x). The app sidebar is the first 400 px.
-const SIDEBAR = 400;
+// Web captures are 2880x1800 (1440x900 CSS px at 2x); work-queue is 2880x2600. The app sidebar is the first 480 px.
+// Crops keep each picture's old aspect ratio where the page allows, so the <img> sizes and the pins in index.html hold.
+const SIDEBAR = 480;
+const MAIN = 2880 - SIDEBAR;
 const WEB = [
   // name, source, crop (in source px) or null, output widths
   ['dashboard', 'web/dashboard.png', null, [960, 1600, 2400]],
-  ['leads', 'web/leads.png', { left: SIDEBAR, top: 0, width: 2880 - SIDEBAR, height: 1800 }, [800, 1400]],
-  ['command-centre', 'web/dashboard.png', { left: SIDEBAR, top: 0, width: 2880 - SIDEBAR, height: 1260 }, [800, 1400]],
-  ['whatsapp', 'web/whatsapp.png', { left: SIDEBAR, top: 0, width: 2880 - SIDEBAR, height: 1800 }, [800, 1400]],
-  ['automation', 'web/automation-flow.png', { left: SIDEBAR + 60, top: 610, width: 1600, height: 1190 }, [600, 1000]],
-  ['project360', 'web/project360.png', { left: SIDEBAR, top: 0, width: 2880 - SIDEBAR, height: 1600 }, [800, 1400]],
-  ['meta-ads', 'web/meta-ads.png', { left: SIDEBAR, top: 0, width: 2880 - SIDEBAR, height: 1620 }, [800, 1400]],
-  ['team', 'web/team-agents.png', { left: SIDEBAR + 20, top: 340, width: 2420, height: 560 }, [700, 1200]],
+  ['leads', 'web/leads.png', { left: SIDEBAR, top: 0, width: MAIN, height: 1742 }, [800, 1400]],
+  // KPI tiles + the whole Work queue card (the old "Daily command centre").
+  ['command-centre', 'web/work-queue.png', { left: SIDEBAR, top: 432, width: MAIN, height: 1219 }, [800, 1400]],
+  ['whatsapp', 'web/whatsapp.png', { left: SIDEBAR, top: 0, width: MAIN, height: 1742 }, [800, 1400]],
+  ['automation', 'web/automation-flow.png', { left: 560, top: 680, width: 1490, height: 1108 }, [600, 1000]],
+  ['project360', 'web/project360.png', { left: SIDEBAR, top: 0, width: MAIN, height: 1742 }, [800, 1400]],
+  ['team', 'web/team-agents.png', { left: 540, top: 425, width: 2280, height: 680 }, [700, 1200]],
 ];
 
 // Mobile captures are 1170x2532 (390x844 CSS px at 3x).
@@ -40,7 +43,6 @@ const MOBILE = [
   ['m-objection', 'mobile/objection.png'],
   ['m-postcall', 'mobile/postcall.png'],
   ['m-lead-calls', 'mobile/lead-calls.png'],
-  ['m-assistant', 'mobile/assistant.png'],
 ];
 const MOBILE_WIDTHS = [360, 720];
 
