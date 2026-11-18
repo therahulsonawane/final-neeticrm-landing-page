@@ -389,9 +389,8 @@
 
         <div class="demo-video-wrap">
           <iframe id="demo-youtube-iframe"
-                  src="https://www.youtube-nocookie.com/embed/N8S6je0Os8I?rel=0&amp;modestbranding=1"
+                  src="https://www.youtube-nocookie.com/embed/H4iEbJju2Ok?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1"
                   title="Neeti CRM Product Walkthrough Video"
-                  loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowfullscreen></iframe>
 
@@ -425,7 +424,7 @@
       var CRM_WEBHOOK_URL = 'https://api.neeticrm.com/api/webhooks/inbound/ca23f30c7d0a6ca2aba977243a73301f39de81652d3099b0';
 
       // 2. Paste your YouTube video URL or ID here (e.g. 'https://youtu.be/xxxx' or 'xxxx')
-      var YOUTUBE_VIDEO_URL = 'https://youtu.be/N8S6je0Os8I';
+      var YOUTUBE_VIDEO_URL = 'https://youtu.be/H4iEbJju2Ok';
       // =========================================================================
 
       // --- YouTube Video Embed Setup ---
@@ -452,7 +451,7 @@
       function updateVideo(url) {
         var videoId = extractYouTubeId(url);
         if (videoId && iframe) {
-          iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?rel=0&modestbranding=1';
+          iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1';
           if (placeholder) placeholder.style.display = 'none';
         } else if (placeholder) {
           placeholder.style.display = 'flex';
