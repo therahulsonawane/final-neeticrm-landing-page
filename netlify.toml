@@ -1,4 +1,4 @@
-# neetisis.com on Netlify. The site is plain files: no build step.
+# neeticrm.com on Netlify. The site is plain files: no build step.
 # Keep the existing /sales_hiring/ folder next to index.html when deploying.
 
 [build]

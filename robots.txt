@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://neetisis.com/sitemap.xml
+Sitemap: https://neeticrm.com/sitemap.xml

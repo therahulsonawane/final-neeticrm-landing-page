@@ -5,7 +5,7 @@
  *
  * Differences from the real page, on purpose:
  * - the Meta Pixel is removed, so people opening the preview do not count as site visits in your ads data;
- * - it is marked noindex, so it never competes with neetisis.com if someone uploads it somewhere;
+ * - it is marked noindex, so it never competes with neeticrm.com if someone uploads it somewhere;
  * - each image is embedded once, at its sharpest size, instead of the responsive set.
  * Run it again after editing the site; it always reads the current files.
  */
@@ -62,8 +62,8 @@ html = html.replace(/<img\b[^>]*>/g, (tag) => {
     .replace(/\ssrc="[^"]+"/, ` src="${dataUri(rel(src))}"`);
 });
 
-// Site-relative links only work on neetisis.com itself
-html = html.replace(/href="\/sales_hiring\/"/g, 'href="https://neetisis.com/sales_hiring/"');
+// Site-relative links only work on neeticrm.com itself
+html = html.replace(/href="\/sales_hiring\/"/g, 'href="https://neeticrm.com/sales_hiring/"');
 html = html.replace(/href="\.\/"/g, 'href="#main"');
 
 const leftovers = html.match(/(src|href)="assets\/[^"]+"/g);

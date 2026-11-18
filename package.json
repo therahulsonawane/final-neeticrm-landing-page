@@ -1,7 +1,7 @@
 {
   "name": "neetisis-website",
   "private": true,
-  "description": "Static landing page for neetisis.com. No build step: the folder is the site.",
+  "description": "Static landing page for neeticrm.com. No build step: the folder is the site.",
   "scripts": {
     "assets": "node scripts/build-assets.cjs",
     "og": "node scripts/build-og.cjs",
