@@ -5,14 +5,24 @@
   publish = "."
 
 [[redirects]]
-  from = "/demo"
-  to = "/demo.html"
+  from = "/bookdemo"
+  to = "/bookdemo.html"
   status = 200
 
 [[redirects]]
   from = "/book-demo"
-  to = "/demo.html"
+  to = "/bookdemo.html"
   status = 200
+
+[[redirects]]
+  from = "/demo"
+  to = "/bookdemo.html"
+  status = 200
+
+[[redirects]]
+  from = "/demo.html"
+  to = "/bookdemo.html"
+  status = 301
 
 # Fonts never change under the same name.
 [[headers]]

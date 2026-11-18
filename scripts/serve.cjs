@@ -18,6 +18,7 @@ http.createServer((req, res) => {
   let file = path.normalize(path.join(ROOT, url));
   if (!file.startsWith(ROOT)) { res.writeHead(403).end(); return; }
   if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
+  if (!path.extname(file) && fs.existsSync(file + '.html')) file = file + '.html';
   fs.readFile(file, (err, data) => {
     if (err) { res.writeHead(404, { 'content-type': 'text/plain' }).end('Not found'); return; }
     res.writeHead(200, { 'content-type': TYPES[path.extname(file)] || 'application/octet-stream', 'cache-control': 'no-store' });
