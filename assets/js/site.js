@@ -488,6 +488,33 @@
         params.append(key, val);
       });
 
+      // Send to Neeti CRM Inbound Webhook
+      var webhookPayload = {
+        name: name,
+        full_name: name,
+        phone: phone,
+        mobile: phone,
+        email: (formData.get('email') || '').toString().trim(),
+        company: company,
+        company_name: company,
+        role: role,
+        team_size: (formData.get('team_size') || '').toString().trim(),
+        message: (formData.get('message') || '').toString().trim(),
+        notes: (formData.get('message') || '').toString().trim(),
+        source: 'Homepage Enquiry Form',
+        form_name: 'enquiry',
+        submitted_at: new Date().toISOString()
+      };
+      if (window.fetch) {
+        fetch('https://api.neeticrm.com/api/webhooks/inbound/ca23f30c7d0a6ca2aba977243a73301f39de81652d3099b0', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(webhookPayload)
+        }).catch(function (err) {
+          console.warn('CRM webhook note:', err);
+        });
+      }
+
       var finish = function () {
         enquiryForm.hidden = true;
         if (enquirySuccess) {

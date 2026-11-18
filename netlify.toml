@@ -4,6 +4,16 @@
 [build]
   publish = "."
 
+[[redirects]]
+  from = "/demo"
+  to = "/demo.html"
+  status = 200
+
+[[redirects]]
+  from = "/book-demo"
+  to = "/demo.html"
+  status = 200
+
 # Fonts never change under the same name.
 [[headers]]
   for = "/assets/fonts/*"
