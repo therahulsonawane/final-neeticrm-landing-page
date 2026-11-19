@@ -5,6 +5,16 @@
   publish = "."
 
 [[redirects]]
+  from = "/thankyou"
+  to = "/thankyou.html"
+  status = 200
+
+[[redirects]]
+  from = "/thank-you"
+  to = "/thankyou.html"
+  status = 200
+
+[[redirects]]
   from = "/bookdemo"
   to = "/bookdemo.html"
   status = 200

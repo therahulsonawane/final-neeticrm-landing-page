@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en-IN" prefix="og: https://ogp.me/ns#">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Thank You | Demo Booked — Neeti CRM</title>
+  <meta name="title" content="Thank You | Demo Booked — Neeti CRM">
+  <meta name="description" content="Your Neeti CRM demo is confirmed! Our sales specialist will reach out within 15 minutes. Watch the product walkthrough video while you wait.">
+  <link rel="canonical" href="https://neeticrm.com/thankyou">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#111827">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Neeti CRM">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="https://neeticrm.com/thankyou">
+  <meta property="og:title" content="Thank You | Demo Booked — Neeti CRM">
+  <meta property="og:description" content="Your Neeti CRM demo is confirmed! Our sales specialist will reach out within 15 minutes.">
+  <meta property="og:image" content="https://neeticrm.com/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://neeticrm.com/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Fonts & Stylesheet -->
+  <link rel="preload" href="assets/fonts/jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];f.addEventListener('load',function(){t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)})}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2566818950420146');
+    fbq('track', 'PageView');
+    fbq('track', 'CompleteRegistration'); /* fire conversion on thank you page */
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2566818950420146&amp;ev=PageView&amp;noscript=1"></noscript>
+
+  <style>
+    /* =====================================================
+       Thank You Page Styles — inherits site design tokens
+       ===================================================== */
+    .ty-page {
+      background: var(--mist, #f6f7fb);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Nav */
+    .demo-nav {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      padding: 16px 24px;
+    }
+    .demo-nav__inner {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .demo-nav__link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .demo-nav__link:hover { color: var(--cobalt); }
+
+    /* Main */
+    .ty-main {
+      flex: 1;
+      padding: 56px 20px 80px;
+    }
+    .ty-container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Confetti / success hero */
+    .ty-hero {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+    .ty-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e6f5ec 0%, #d1fae5 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 0 0 10px rgba(18, 128, 74, 0.08);
+      animation: ty-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    @keyframes ty-pop {
+      from { transform: scale(0.6); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .ty-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--green-50, #e6f5ec);
+      color: var(--green, #12804a);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .ty-title {
+      font: 800 clamp(2rem, 4.5vw, 2.9rem)/1.1 var(--display);
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+    .ty-subtitle {
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 54ch;
+      margin: 0 auto 28px;
+    }
+
+    /* Steps / what happens next */
+    .ty-next {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: clamp(22px, 4vw, 36px);
+      box-shadow: 0 12px 36px -10px rgba(13, 16, 51, 0.07);
+      margin-bottom: 48px;
+    }
+    .ty-next__title {
+      font: 750 1.125rem/1.3 var(--display);
+      color: var(--ink);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ty-steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .ty-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .ty-step__num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2a35fb, #5a3dff);
+      color: #fff;
+      font: 700 0.875rem/32px var(--display);
+      text-align: center;
+    }
+    .ty-step__body { flex: 1; padding-top: 4px; }
+    .ty-step__label {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .ty-step__desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* WhatsApp CTA */
+    .ty-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .ty-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 26px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 12px;
+      font: 700 1rem/1 var(--display);
+      text-decoration: none;
+      transition: filter 0.2s, transform 0.15s;
+      box-shadow: 0 6px 20px -4px rgba(37, 211, 102, 0.45);
+    }
+    .ty-wa-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .ty-home-link {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .ty-home-link:hover { color: var(--ink); }
+
+    /* Video section */
+    .ty-video-section { margin-top: 8px; }
+    .ty-video-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .ty-video-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--green, #00a885);
+      margin-bottom: 8px;
+    }
+    .ty-video-title {
+      font: 750 clamp(1.4rem, 3vw, 1.85rem)/1.2 var(--display);
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .ty-video-desc {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      margin: 0;
+    }
+    .ty-video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #05071a;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px -15px rgba(13, 16, 51, 0.14);
+    }
+    .ty-video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* Footer */
+    .demo-footer {
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.84375rem;
+      color: var(--muted);
+    }
+    .demo-footer a { color: var(--ink); text-decoration: underline; }
+  </style>
+</head>
+
+<body class="ty-page">
+  <a class="skip" href="#ty-video">Skip to video</a>
+
+  <!-- Nav -->
+  <header class="demo-nav">
+    <div class="demo-nav__inner">
+      <a class="brand" href="./" aria-label="Neeti CRM home">
+        <img class="brand__mark" src="assets/img/mark-64.png" width="34" height="32" alt="">
+        <span class="brand__name">Neeti <span class="brand__sis">CRM</span></span>
+      </a>
+      <a class="demo-nav__link" href="./">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="ty-main" id="main">
+    <div class="ty-container">
+
+      <!-- Hero -->
+      <div class="ty-hero">
+        <div class="ty-icon" aria-hidden="true">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#12804a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+        </div>
+        <span class="ty-badge">&#10003; Demo Confirmed</span>
+        <h1 class="ty-title">You're all set!</h1>
+        <p class="ty-subtitle" id="ty-msg">
+          Thank you for requesting a Neeti CRM demo. Our sales specialist will reach out on your WhatsApp / phone within <strong>15 minutes</strong> to confirm your slot.
+        </p>
+      </div>
+
+      <!-- What Happens Next -->
+      <div class="ty-next">
+        <p class="ty-next__title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          What happens next
+        </p>
+        <ul class="ty-steps">
+          <li class="ty-step">
+            <div class="ty-step__num">1</div>
+            <div class="ty-step__body">
+              <p class="ty-step__label">We call you within 15 minutes</p>
+              <p class="ty-step__desc">A Neeti CRM specialist will reach you on the number you provided to schedule your 1-on-1 walkthrough.</p>
+            </div>
+          </li>
+          <li class="ty-step">
+            <div class="ty-step__num">2</div>
+            <div class="ty-step__body">
+              <p class="ty-step__label">Personalised demo — your use case</p>
+              <p class="ty-step__desc">We'll show exactly how Neeti CRM works for your projects: lead capture, WhatsApp automation, and AI call coaching.</p>
+            </div>
+          </li>
+          <li class="ty-step">
+            <div class="ty-step__num">3</div>
+            <div class="ty-step__body">
+              <p class="ty-step__label">Start your 15-day free trial</p>
+              <p class="ty-step__desc">Zero setup fees, no card required. Go live in one day and see results in your first week.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- WhatsApp instant CTA -->
+      <div class="ty-cta">
+        <a class="ty-wa-btn" id="ty-wa-btn" href="https://wa.me/918329984679?text=Hi%2C+I+just+booked+a+Neeti+CRM+demo+and+looking+forward+to+the+walkthrough!" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          <span>Chat on WhatsApp for instant reply &#8599;</span>
+        </a>
+        <a class="ty-home-link" href="./">Or return to Home &rarr;</a>
+      </div>
+
+      <!-- YouTube Video -->
+      <section class="ty-video-section" id="ty-video" aria-labelledby="ty-video-title">
+        <div class="ty-video-header">
+          <p class="ty-video-kicker">While you wait…</p>
+          <h2 id="ty-video-title" class="ty-video-title">Watch the Neeti CRM Overview</h2>
+          <p class="ty-video-desc">See exactly what we'll walk you through — lead capture, WhatsApp automation, and AI call coaching in 3 minutes.</p>
+        </div>
+        <div class="ty-video-wrap">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/H4iEbJju2Ok?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+            title="Neeti CRM Product Walkthrough"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="demo-footer">
+    <p>&copy; 2026 Neeti CRM. All rights reserved. &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="terms-of-service.html">Terms of Service</a></p>
+  </footer>
+
+  <script>
+    // Personalise the thank-you message using URL params set by bookdemo.html
+    // e.g. /thankyou?name=Rahul&phone=9820000000
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var name  = params.get('name')  || '';
+      var phone = params.get('phone') || '';
+      var msg   = document.getElementById('ty-msg');
+      var waBtn = document.getElementById('ty-wa-btn');
+
+      if (name && msg) {
+        var first = name.split(' ')[0];
+        msg.innerHTML = 'Thank you, <strong>' + first + '!</strong> Our sales specialist will reach out on your WhatsApp / phone' +
+          (phone ? ' (<strong>+91&nbsp;' + phone + '</strong>)' : '') +
+          ' within <strong>15 minutes</strong> to confirm your demo slot.';
+      }
+
+      if (name && waBtn) {
+        var waText = 'Hi, I just booked a Neeti CRM demo (Name: ' + name + (phone ? ', Phone: +91 ' + phone : '') + '). Looking forward to the walkthrough!';
+        waBtn.href = 'https://wa.me/918329984679?text=' + encodeURIComponent(waText);
+      }
+    })();
+  </script>
+</body>
+</html>

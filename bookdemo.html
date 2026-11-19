@@ -540,19 +540,10 @@
           }
 
           function showSuccess() {
-            form.hidden = true;
-            if (successBox) {
-              successBox.hidden = false;
-              if (payload.name && successMsg) {
-                var firstName = payload.name.split(' ')[0];
-                successMsg.textContent = 'Thank you, ' + firstName + '! Our sales specialist will reach out to you on +91 ' + payload.phone + ' within 15 minutes to confirm your demo.';
-              }
-              if (waDirect) {
-                var waText = 'Hi, I just requested a demo for ' + payload.company + ' (Name: ' + payload.name + ', Phone: +91 ' + payload.phone + '). Looking forward to the walkthrough.';
-                waDirect.href = 'https://wa.me/918329984679?text=' + encodeURIComponent(waText);
-              }
-              successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+            // Redirect to the Thank You page, passing name & phone as params for personalisation
+            var qs = '?name=' + encodeURIComponent(payload.name) +
+                     '&phone=' + encodeURIComponent(payload.phone);
+            window.location.href = 'thankyou.html' + qs;
           }
 
           // If a CRM Webhook URL is provided, send POST payload to it
