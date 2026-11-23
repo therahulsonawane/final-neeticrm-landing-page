@@ -499,6 +499,8 @@
         company_name: company,
         role: role,
         team_size: (formData.get('team_size') || '').toString().trim(),
+        location: (formData.get('location') || '').toString().trim(),
+        city: (formData.get('location') || '').toString().trim(),
         message: (formData.get('message') || '').toString().trim(),
         notes: (formData.get('message') || '').toString().trim(),
         source: 'Homepage Enquiry Form',
