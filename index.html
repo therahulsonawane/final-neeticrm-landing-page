@@ -70,6 +70,70 @@ fbq('track', 'PageView');
 <link rel="stylesheet" href="assets/css/site.css">
 <script src="assets/js/site.js" defer></script>
 
+<style>
+/* ===== Get Quote Modal ===== */
+.quote-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.quote-modal[hidden] { display: none; }
+.quote-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5,7,26,.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+.quote-modal__box {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: clamp(24px, 5vw, 40px);
+  box-shadow: 0 32px 80px -16px rgba(5,7,26,.4);
+  animation: qm-in .25s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes qm-in {
+  from { transform: scale(.93) translateY(12px); opacity: 0; }
+  to   { transform: scale(1)   translateY(0);    opacity: 1; }
+}
+.quote-modal__close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  transition: background .15s, color .15s;
+}
+.quote-modal__close:hover { background: var(--mist); color: var(--ink); }
+.demo-alert {
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: .875rem;
+  margin-bottom: 20px;
+}
+/* prevent body scroll when modal open */
+body.modal-open { overflow: hidden; }
+/* trigger buttons look like links in footer */
+.quote-modal-trigger { display: inline; }
+</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -177,6 +241,7 @@ fbq('track', 'PageView');
                 <a class="btn btn--primary"
                     href="#enquiry"
                     data-track="demo"><span class="btn__text">Book a free demo</span><span class="btn__text-mobile">Demo</span> &#8599;</a>
+                <button type="button" id="nav-get-quote-btn" class="btn btn--line" style="display:none" data-track="get-quote">Get a Quote</button>
             </div>
             <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle aria-label="Toggle navigation menu">
                 <span class="nav__toggle-bar"></span>
@@ -188,7 +253,6 @@ fbq('track', 'PageView');
         <div class="menu" id="menu" data-menu hidden>
     <a href="#solutions">Solutions</a>
     <a href="#product">How it works</a>
-    <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
     <a href="#enquiry">Enquire</a>
     <a href="https://app.neeticrm.com/login">Sign in</a>
@@ -780,75 +844,106 @@ fbq('track', 'PageView');
   </div>
 </section>
 
-<!-- ============ Pricing ============ -->
+<!-- ============ Get a Quote ============ -->
 <section class="band pricing" id="pricing" aria-labelledby="pricing-title">
-  <div class="rail pricing__head">
-    <p style="font-size:.75rem;letter-spacing:.14em;font-weight:800;text-transform:uppercase;color:var(--green,#00a885);margin-bottom:18px">Simple per-user pricing</p>
-    <h2 id="pricing-title" class="h2">Start with one user. Scale with your team.</h2>
-    <p class="lede">Lead with the full Sales Intelligence experience, or choose the right foundation for your stage.</p>
-    <div class="cycle" role="radiogroup" aria-label="Billing cycle" data-cycle>
-      <button type="button" role="radio" aria-checked="true" data-cycle-option="monthly">Monthly</button>
-      <button type="button" role="radio" aria-checked="false" data-cycle-option="quarterly" tabindex="-1">Quarterly <span>-5%</span></button>
-      <button type="button" role="radio" aria-checked="false" data-cycle-option="halfyearly" tabindex="-1">Half-yearly <span>-10%</span></button>
-      <button type="button" role="radio" aria-checked="false" data-cycle-option="annual" tabindex="-1">Yearly <span>-15%</span></button>
+  <div class="rail pricing__head" style="text-align:center;max-width:640px;margin-inline:auto">
+    <p style="font-size:.75rem;letter-spacing:.14em;font-weight:800;text-transform:uppercase;color:var(--green,#00a885);margin-bottom:18px">Custom pricing for your team</p>
+    <h2 id="pricing-title" class="h2">Pricing tailored to your team size &amp; needs.</h2>
+    <p class="lede">Every real estate team is different. Tell us about yours and we'll share a plan that fits — no generic rate cards, no guesswork.</p>
+    <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center">
+      <button type="button" class="btn btn--primary btn--lg" id="get-quote-btn" data-track="get-quote">
+        Get a Quote &#8599;
+      </button>
+      <a class="btn btn--line btn--lg" href="https://wa.me/918329984679?text=Hi%2C%20I%27d%20like%20to%20know%20the%20pricing%20for%20Neeti%20CRM." target="_blank" rel="noopener" data-track="whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+        Ask on WhatsApp
+      </a>
     </div>
-  </div>
-
-  <div class="rail plans">
-    <article class="plan">
-      <h3 class="plan__name">Basic</h3>
-      <p class="plan__for">Never lose track of a lead.</p>
-      <p class="plan__price"><span class="plan__cur">&#8377;</span><span data-price="basic">599</span><span class="plan__unit">per user / month</span></p>
-      <p class="plan__bill" data-bill="basic">Billed monthly. No minimum seats.</p>
-      <a class="btn btn--line btn--block" href="https://app.neeticrm.com/signup" data-track="signup">Start free trial</a>
-      <ul class="plan__list">
-        <li>Lead capture &amp; pipeline</li>
-        <li>Assignment &amp; notifications</li>
-        <li>Tasks and follow-up tracking</li>
-        <li>Site visit scheduling</li>
-        <li>Essential dashboards</li>
-        <li>Mobile app with offline mode</li>
-      </ul>
-    </article>
-
-    <article class="plan">
-      <h3 class="plan__name">Professional</h3>
-      <p class="plan__for">Automate follow-ups and improve visibility.</p>
-      <p class="plan__price"><span class="plan__cur">&#8377;</span><span data-price="pro">1,199</span><span class="plan__unit">per user / month</span></p>
-      <p class="plan__bill" data-bill="pro">Billed monthly. No minimum seats.</p>
-      <a class="btn btn--line btn--block" href="https://app.neeticrm.com/signup" data-track="signup">Start free trial</a>
-      <ul class="plan__list">
-        <li class="plan__all">Everything in Basic, plus</li>
-        <li>WhatsApp automation</li>
-        <li>Advanced follow-up workflows</li>
-        <li>Marketing-source analysis</li>
-        <li>Sales performance dashboards</li>
-        <li>Limited AI objection assistance</li>
-      </ul>
-    </article>
-
-    <article class="plan plan--feature">
-      <p class="plan__flag">&#9733; Recommended flagship</p>
-      <h3 class="plan__name">Sales Intelligence</h3>
-      <p class="plan__for">AI-powered sales performance improvement.</p>
-      <p class="plan__price"><span class="plan__cur">&#8377;</span><span data-price="ent">1,899</span><span class="plan__unit">per user / month</span></p>
-      <p class="plan__bill" data-bill="ent">Billed monthly. No minimum seats.</p>
-      <a class="btn btn--primary btn--block" href="https://wa.me/918329984679?text=Hi%2C%20I%27d%20like%20a%20demo%20of%20the%20Sales%20Intelligence%20plan." target="_blank" rel="noopener" data-track="demo">Book Flagship Demo &#8599;</a>
-      <ul class="plan__list">
-        <li class="plan__all">Everything in Professional, plus</li>
-        <li>Advanced AI objection handling</li>
-        <li>AI call recording analysis</li>
-        <li>Personalised coaching insights</li>
-        <li>Advanced target-versus-actual intelligence</li>
-        <li>Assisted setup &amp; launch bonuses</li>
-        <li>A dedicated account manager</li>
-      </ul>
-    </article>
-  </div>
-  <div class="rail pricing__foot">
-    <p>Prepaid commitments. Applicable taxes, third-party messaging costs and usage-based AI charges, if any, are extra. AI allowances and feature availability are confirmed before purchase. Need more seats or a custom setup? <a href="https://wa.me/918329984679?text=Hi%20Neeti%20CRM%20team%2C%20I%20have%20a%20question%20about%20pricing." data-track="whatsapp" rel="noopener" target="_blank">Message us on WhatsApp</a>.</p>
+    <p style="margin-top:20px;font-size:.85rem;color:var(--muted)">15-day free trial &middot; No credit card required &middot; Dedicated onboarding support</p>
   </div>
 </section>
+
+<!-- ============ Get Quote Modal ============ -->
+<div id="quote-modal" class="quote-modal" role="dialog" aria-modal="true" aria-labelledby="quote-modal-title" hidden>
+  <div class="quote-modal__backdrop" id="quote-modal-backdrop"></div>
+  <div class="quote-modal__box">
+    <button class="quote-modal__close" id="quote-modal-close" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <div id="quote-form-wrap">
+      <div style="margin-bottom:24px">
+        <p style="font-size:.75rem;letter-spacing:.14em;font-weight:800;text-transform:uppercase;color:var(--green,#00a885);margin-bottom:8px">Custom Quote</p>
+        <h3 id="quote-modal-title" style="font:750 1.5rem/1.2 var(--display);color:var(--ink);letter-spacing:-.02em;margin-bottom:8px">Get a price for your team</h3>
+        <p style="font-size:.9375rem;color:var(--muted);line-height:1.55">Tell us a little about your business and we'll send a tailored quote within 15 minutes.</p>
+      </div>
+
+      <div class="demo-alert" id="quote-alert" role="alert" style="display:none"></div>
+
+      <form id="quote-form" class="enquiry__form" name="get-quote" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="get-quote">
+        <p class="enquiry__bot" style="display:none"><label>Don't fill this out: <input name="bot-field" tabindex="-1"></label></p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="q-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="q-name" name="name" required placeholder="e.g. Rahul Sharma" autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="q-phone">WhatsApp / Phone <span class="req">*</span></label>
+            <div class="phone-input">
+              <span class="phone-prefix">+91</span>
+              <input type="tel" id="q-phone" name="phone" required placeholder="98200 00000" pattern="[0-9]{10}" title="10-digit mobile number" autocomplete="tel">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="q-company">Company / Project Name <span class="req">*</span></label>
+            <input type="text" id="q-company" name="company" required placeholder="e.g. Skyline Realty">
+          </div>
+          <div class="form-field">
+            <label for="q-team">Sales Team Size</label>
+            <select id="q-team" name="team_size">
+              <option value="" disabled selected>Select team size</option>
+              <option value="1-5">1 &ndash; 5 salespeople</option>
+              <option value="6-15">6 &ndash; 15 salespeople</option>
+              <option value="16-50">16 &ndash; 50 salespeople</option>
+              <option value="50+">50+ salespeople</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="q-message">Anything specific you'd like to know? <span>(Optional)</span></label>
+          <textarea id="q-message" name="message" rows="2" placeholder="e.g. We need WhatsApp automation and AI call recording for 12 users in Pune..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg btn--block enquiry__submit" id="quote-submit-btn">
+          <span>Send My Quote Request</span> &#8599;
+        </button>
+        <p class="enquiry__note" style="margin-top:14px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          No spam. Strictly private under our <a href="privacy-policy.html">Privacy Policy</a>.
+        </p>
+      </form>
+    </div>
+
+    <!-- Success state -->
+    <div id="quote-success" hidden style="text-align:center;padding:16px 0">
+      <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#e6f5ec,#d1fae5);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#12804a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h3 style="font:750 1.375rem/1.2 var(--display);color:var(--ink);margin-bottom:10px">Quote request received!</h3>
+      <p id="quote-success-msg" style="font-size:.9375rem;color:var(--muted);line-height:1.6;margin-bottom:24px">Thank you! Our team will reach out within 15 minutes with a personalised quote.</p>
+      <a id="quote-wa-link" class="btn btn--line btn--sm" href="https://wa.me/918329984679" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+        Chat instantly on WhatsApp &#8599;
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- ============ Launch Bonuses ============ -->
 <section class="band" id="bonuses" aria-labelledby="bonuses-title" style="background:var(--cream,#f7f8fb)">
@@ -1104,7 +1199,7 @@ fbq('track', 'PageView');
                     <a href="#coach">AI call analysis</a>
                     <a href="#measure">Reports</a>
                     <a href="#mobile">Mobile app</a>
-                    <a href="#pricing">Pricing</a>
+                    <button type="button" class="quote-modal-trigger" style="background:none;border:none;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer;text-align:left" data-track="get-quote">Get a Quote</button>
                 </div>
                 <div>
                     <p class="footer__h">Company</p>
@@ -1134,7 +1229,6 @@ fbq('track', 'PageView');
   </div>
   <div class="rail footer__base">
     <p>&copy; 2026 Neeti CRM. All rights reserved.</p>
-    <p>Prices in Indian rupees, excluding GST.</p>
   </div>
 </footer>
 
@@ -1150,5 +1244,121 @@ fbq('track', 'PageView');
             </a>
         </div>
     </aside>
+
+<script>
+/* ===== Get Quote Modal Controller ===== */
+(function () {
+  'use strict';
+  var WEBHOOK = 'https://api.neeticrm.com/api/webhooks/inbound/ca23f30c7d0a6ca2aba977243a73301f39de81652d3099b0';
+
+  var modal      = document.getElementById('quote-modal');
+  var backdrop   = document.getElementById('quote-modal-backdrop');
+  var closeBtn   = document.getElementById('quote-modal-close');
+  var form       = document.getElementById('quote-form');
+  var alertBox   = document.getElementById('quote-alert');
+  var submitBtn  = document.getElementById('quote-submit-btn');
+  var successBox = document.getElementById('quote-success');
+  var successMsg = document.getElementById('quote-success-msg');
+  var waLink     = document.getElementById('quote-wa-link');
+
+  function openModal() {
+    if (!modal) return;
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    if (closeBtn) closeBtn.focus();
+  }
+  function closeModal() {
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+  }
+
+  /* open triggers — main button, any .quote-modal-trigger element, nav link */
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('#get-quote-btn, #nav-get-quote-btn, .quote-modal-trigger, [data-track="get-quote"]');
+    if (t) { e.preventDefault(); openModal(); }
+  });
+
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  /* close on Escape */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal && !modal.hidden) closeModal();
+  });
+
+  /* form submission */
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (alertBox) alertBox.style.display = 'none';
+
+      /* honeypot */
+      var bot = form.elements['bot-field'];
+      if (bot && bot.value) { closeModal(); return; }
+
+      var fd      = new FormData(form);
+      var name    = (fd.get('name')    || '').toString().trim();
+      var phone   = (fd.get('phone')   || '').toString().trim();
+      var company = (fd.get('company') || '').toString().trim();
+
+      if (!name || !phone || !company) {
+        if (alertBox) {
+          alertBox.textContent = 'Please fill in Name, Phone and Company.';
+          alertBox.style.display = 'block';
+        }
+        return;
+      }
+
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.firstElementChild.textContent = 'Sending…'; }
+
+      /* Meta Pixel */
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', { content_name: 'Get Quote Form' });
+      }
+
+      var payload = {
+        name: name, full_name: name,
+        phone: phone, mobile: phone,
+        company: company, company_name: company,
+        team_size: (fd.get('team_size') || '').toString().trim(),
+        message: (fd.get('message') || '').toString().trim(),
+        source: 'Get Quote Modal',
+        form_name: 'get-quote',
+        submitted_at: new Date().toISOString()
+      };
+
+      function showSuccess() {
+        form.hidden = true;
+        if (successBox) {
+          successBox.hidden = false;
+          if (successMsg) {
+            successMsg.textContent = 'Thank you, ' + name.split(' ')[0] + '! Our team will reach out to you on +91 ' + phone + ' within 15 minutes with a personalised quote.';
+          }
+          if (waLink) {
+            var txt = 'Hi, I just requested a Neeti CRM quote (Name: ' + name + ', Phone: +91 ' + phone + ', Company: ' + company + '). Looking forward to hearing from you.';
+            waLink.href = 'https://wa.me/918329984679?text=' + encodeURIComponent(txt);
+          }
+        }
+      }
+
+      /* Webhook */
+      fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        showSuccess();
+      }).catch(function () {
+        /* Netlify fallback */
+        var p = new URLSearchParams();
+        fd.forEach(function (v, k) { p.append(k, v); });
+        fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: p.toString() }).finally(showSuccess);
+      });
+    });
+  }
+})();
+</script>
 </body>
 </html>
