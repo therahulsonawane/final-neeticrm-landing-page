@@ -507,15 +507,8 @@
         form_name: 'enquiry',
         submitted_at: new Date().toISOString()
       };
-      if (window.fetch) {
-        fetch('https://api.neeticrm.com/api/webhooks/inbound/ca23f30c7d0a6ca2aba977243a73301f39de81652d3099b0', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(webhookPayload)
-        }).catch(function (err) {
-          console.warn('CRM webhook note:', err);
-        });
-      }
+
+      var WEBHOOK_URL = 'https://api.neeticrm.com/api/webhooks/inbound/ca23f30c7d0a6ca2aba977243a73301f39de81652d3099b0';
 
       var finish = function () {
         enquiryForm.hidden = true;
@@ -534,16 +527,24 @@
       };
 
       if (window.fetch) {
-        fetch('/', {
+        // Fire CRM webhook and Netlify form submit in parallel; show success when webhook resolves
+        var webhookPromise = fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(webhookPayload)
+        });
+
+        var netlifyPromise = fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: params.toString()
-        }).then(function () {
-          finish();
-        }).catch(function (err) {
-          console.warn('Form network submit note:', err);
-          finish();
         });
+
+        webhookPromise
+          .catch(function (err) { console.warn('CRM webhook note:', err); })
+          .finally(function () { finish(); });
+
+        netlifyPromise.catch(function (err) { console.warn('Netlify form note:', err); });
       } else {
         finish();
       }
