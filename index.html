@@ -1235,25 +1235,206 @@
           </div>
         </div>
 
-        <!-- Right side: CTA card that opens the shared modal -->
+        <!-- Right side: Inline enquiry form -->
         <div class="enquiry__cta-card">
           <div class="enquiry__cta-inner">
-            <div class="enquiry__cta-icon">&#128204;</div>
+            <p style="font-size:.68rem;letter-spacing:.13em;font-weight:800;text-transform:uppercase;color:var(--green,#00a885);margin-bottom:6px">Free Demo &middot; Get a Quote</p>
             <h3 class="enquiry__cta-title">Book your free 30-min demo</h3>
-            <p class="enquiry__cta-sub">Share a few details and we'll prepare a personalised walkthrough with your live leads — usually within 15 minutes.</p>
-            <ul class="enquiry__cta-bullets">
-              <li>&#10003;&nbsp; Free setup &amp; onboarding support</li>
-              <li>&#10003;&nbsp; No credit card required</li>
-              <li>&#10003;&nbsp; Quote tailored to your team size</li>
-            </ul>
-            <button type="button" class="btn btn--primary btn--lg btn--block ncrm-modal-open" data-modal-title="Book Your Free Demo" data-modal-sub="Share a few details and we'll arrange a personalised 30-minute walkthrough within 15 minutes." data-track="demo" style="margin-top:28px">
-              Book Free Demo &amp; Get Quote &#8599;
-            </button>
-            <p style="font-size:.78rem;color:var(--muted,#6b7280);text-align:center;margin-top:12px">&#128274; No spam. Confidential under our <a href="privacy-policy.html" style="color:inherit;text-decoration:underline">Privacy Policy</a>.</p>
+            <p class="enquiry__cta-sub">Share a few details and we&rsquo;ll prepare a personalised walkthrough — usually within 15 minutes.</p>
+
+            <form id="enquiry-form"
+              name="enquiry"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              novalidate
+              style="margin-top:20px">
+              <input type="hidden" name="form-name" value="enquiry">
+              <input name="bot-field" style="position:absolute;opacity:0;pointer-events:none;height:0;width:0" tabindex="-1" autocomplete="off">
+
+              <!-- Name + Phone -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+                <div>
+                  <label for="enq-name" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Full Name <span style="color:#e53e3e">*</span></label>
+                  <input type="text" id="enq-name" name="name" required placeholder="Rahul Sharma" autocomplete="name"
+                    style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;box-sizing:border-box;outline:none"
+                    onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
+                </div>
+                <div>
+                  <label for="enq-phone" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Phone <span style="color:#e53e3e">*</span></label>
+                  <div style="display:flex;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden" id="enq-phone-wrap"
+                    onfocusin="this.style.borderColor='#00a885'" onfocusout="this.style.borderColor='#e5e7eb'">
+                    <span style="padding:9px 9px;background:#f9fafb;font-size:.82rem;font-weight:700;color:#374151;white-space:nowrap;border-right:1.5px solid #e5e7eb">+91</span>
+                    <input type="tel" id="enq-phone" name="phone" required placeholder="98200 00000" pattern="[0-9]{10}" autocomplete="tel"
+                      style="flex:1;padding:9px 10px;border:none;font-size:.88rem;font-family:inherit;min-width:0;outline:none;background:transparent">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email + Company -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+                <div>
+                  <label for="enq-email" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Work Email <span style="color:#e53e3e">*</span></label>
+                  <input type="email" id="enq-email" name="email" required placeholder="rahul@company.com" autocomplete="email"
+                    style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;box-sizing:border-box;outline:none"
+                    onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
+                </div>
+                <div>
+                  <label for="enq-company" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Company <span style="color:#e53e3e">*</span></label>
+                  <input type="text" id="enq-company" name="company" required placeholder="Skyline Realty"
+                    style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;box-sizing:border-box;outline:none"
+                    onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
+                </div>
+              </div>
+
+              <!-- Business Type + Team Size -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+                <div>
+                  <label for="enq-role" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Business Type</label>
+                  <select id="enq-role" name="role"
+                    style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;background:#fff;box-sizing:border-box;outline:none;cursor:pointer"
+                    onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
+                    <option value="">Select type</option>
+                    <option value="Developer">Real Estate Developer</option>
+                    <option value="Mandate Firm">Mandate Sales Firm</option>
+                    <option value="Channel Partner">Channel Partner / Broker</option>
+                    <option value="Marketing Agency">Marketing Agency</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="enq-team" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Team Size</label>
+                  <select id="enq-team" name="team_size"
+                    style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;background:#fff;box-sizing:border-box;outline:none;cursor:pointer"
+                    onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
+                    <option value="">Select size</option>
+                    <option value="1-5">1 &ndash; 5</option>
+                    <option value="6-15">6 &ndash; 15</option>
+                    <option value="16-50">16 &ndash; 50</option>
+                    <option value="50+">50+</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- City / Location -->
+              <div style="margin-bottom:12px">
+                <label for="enq-location" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">City / Location <span style="font-weight:400;color:#9ca3af">(Optional)</span></label>
+                <input type="text" id="enq-location" name="location" placeholder="e.g. Pune, Mumbai, Bangalore" autocomplete="address-level2"
+                  style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;box-sizing:border-box;outline:none"
+                  onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
+              </div>
+
+              <!-- Message -->
+              <div style="margin-bottom:16px">
+                <label for="enq-message" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">What would you like to improve? <span style="font-weight:400;color:#9ca3af">(Optional)</span></label>
+                <textarea id="enq-message" name="message" rows="2" placeholder="e.g. We get 250 leads/month from Meta and want to reduce leakage..."
+                  style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;resize:vertical;box-sizing:border-box;outline:none"
+                  onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
+              </div>
+
+              <!-- Error alert -->
+              <div id="enq-alert" role="alert" style="display:none;background:#fef2f2;border-left:4px solid #f87171;color:#991b1b;padding:9px 13px;font-size:.83rem;border-radius:6px;margin-bottom:12px"></div>
+
+              <!-- Submit -->
+              <button id="enq-submit" type="submit"
+                style="width:100%;padding:13px 20px;background:linear-gradient(135deg,#00c49a,#00a885);border:none;border-radius:9px;font-size:.95rem;font-weight:700;font-family:inherit;color:#fff;cursor:pointer;transition:opacity .2s;letter-spacing:.01em"
+                onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
+                <span id="enq-submit-label">Request Free Demo &amp; Get Quote &#8599;</span>
+              </button>
+              <p style="font-size:.73rem;color:#9ca3af;text-align:center;margin-top:10px">&#128274;&nbsp;No spam. Confidential under our <a href="privacy-policy.html" style="color:#6b7280;text-decoration:underline">Privacy Policy</a>.</p>
+            </form>
           </div>
+        </div>
 
       </div>
     </section>
+
+    <script>
+    /* ===== Inline Enquiry Form — webhook + redirect ===== */
+    (function () {
+      'use strict';
+      var WEBHOOK = 'https://api.neeticrm.com/api/webhooks/inbound/ca23f30c7d0a6ca2aba977243a73301f39de81652d3099b0';
+      var REDIRECT = '/bookdemothankyou';
+
+      var form      = document.getElementById('enquiry-form');
+      var alertBox  = document.getElementById('enq-alert');
+      var submitBtn = document.getElementById('enq-submit');
+      var submitLbl = document.getElementById('enq-submit-label');
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (alertBox) alertBox.style.display = 'none';
+
+        /* honeypot */
+        var bot = form.elements['bot-field'];
+        if (bot && bot.value) { window.location.href = REDIRECT; return; }
+
+        var fd      = new FormData(form);
+        var name    = (fd.get('name')    || '').toString().trim();
+        var phone   = (fd.get('phone')   || '').toString().trim();
+        var email   = (fd.get('email')   || '').toString().trim();
+        var company = (fd.get('company') || '').toString().trim();
+
+        var missing = [];
+        if (!name)    missing.push('Full Name');
+        if (!phone)   missing.push('Phone');
+        if (!email)   missing.push('Work Email');
+        if (!company) missing.push('Company');
+
+        if (missing.length) {
+          if (alertBox) {
+            alertBox.textContent = 'Please fill in: ' + missing.join(', ') + '.';
+            alertBox.style.display = 'block';
+          }
+          return;
+        }
+
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitLbl) submitLbl.textContent = 'Sending\u2026';
+
+        /* Meta Pixel */
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead', { content_name: 'Enquiry Form' });
+        }
+
+        var payload = {
+          name: name,         full_name: name,
+          phone: phone,       mobile: phone,
+          email: email,
+          company: company,   company_name: company,
+          role:       (fd.get('role')      || '').toString().trim(),
+          team_size:  (fd.get('team_size') || '').toString().trim(),
+          location:   (fd.get('location') || '').toString().trim(),
+          city:       (fd.get('location') || '').toString().trim(),
+          message:    (fd.get('message')  || '').toString().trim(),
+          notes:      (fd.get('message')  || '').toString().trim(),
+          source:     'Enquiry Section Form',
+          form_name:  'enquiry',
+          submitted_at: new Date().toISOString()
+        };
+
+        function doRedirect() { window.location.href = REDIRECT; }
+
+        /* Post to Netlify Forms (fire-and-forget) */
+        var netlifyData = new URLSearchParams();
+        netlifyData.append('form-name', 'enquiry');
+        fd.forEach(function (v, k) { if (k !== 'bot-field') netlifyData.append(k, v); });
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: netlifyData.toString()
+        }).catch(function () {});
+
+        /* Post to CRM webhook, then redirect */
+        fetch(WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(doRedirect).catch(doRedirect);
+      });
+    })();
+    </script>
 
     <!-- ============ Final CTA ============ -->
     <section class="night final" aria-labelledby="final-title">
@@ -1562,18 +1743,7 @@
         return;
       }
 
-      /* "Book Demo" anchors — intercept #enquiry links as modal opens */
-      var a = e.target.closest('a[href="#enquiry"], a[data-track="demo"]');
-      if (a) {
-        e.preventDefault();
-        openModal({
-          kicker: 'Book a Free Demo',
-          title:  'Book your 30-min demo',
-          sub:    'Share a few details and we\u2019ll arrange a personalised walkthrough within 15 minutes.',
-          source: 'Book Demo Button'
-        });
-        return;
-      }
+      /* "Book Demo" / #enquiry links — scroll to form section naturally (no modal interception) */
     });
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
