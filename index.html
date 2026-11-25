@@ -1187,7 +1187,7 @@
       </div>
     </section>
 
-    <!-- ============ Enquiry Form ============ -->
+    <!-- ============ Enquiry / Contact Section ============ -->
     <section class="band enquiry" id="enquiry" aria-labelledby="enquiry-title">
       <div class="rail enquiry__rail">
         <div class="enquiry__info">
@@ -1208,8 +1208,7 @@
               <span class="enquiry__icon">&#10003;</span>
               <div>
                 <strong>Works with your existing team</strong>
-                <p>No extra apps needed for agents &mdash; simple workflows, automated WhatsApp, and Android call
-                  recording.</p>
+                <p>No extra apps needed for agents &mdash; simple workflows, automated WhatsApp, and Android call recording.</p>
               </div>
             </li>
             <li>
@@ -1228,8 +1227,7 @@
                 href="https://wa.me/918329984679?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Neeti%20CRM."
                 target="_blank" rel="noopener" data-track="whatsapp">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
-                  <path
-                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
                 </svg>
                 <span>Chat on WhatsApp: +91 832 998 4679</span>
               </a>
@@ -1237,108 +1235,24 @@
           </div>
         </div>
 
-        <form id="enquiry-form" data-netlify="true" name="enquiry" netlify-honeypot="bot-field"
-          action="/bookdemothankyou" method="POST">
-          <input type="hidden" name="form-name" value="enquiry">
-          <input type="hidden" name="bot-field" style="display:none">
-
-        <div class="form-row">
-          <div class="form-field">
-            <label for="enquiry-name">Full Name <span class="req">*</span></label>
-            <input type="text" id="enquiry-name" name="name" required placeholder="e.g. Rahul Sharma"
-              autocomplete="name">
-          </div>
-          <div class="form-field">
-            <label for="enquiry-phone">Phone Number <span class="req">*</span></label>
-            <div class="phone-input">
-              <span class="phone-prefix">+91</span>
-              <input type="tel" id="enquiry-phone" name="phone" required placeholder="98200 00000" pattern="[0-9]{10}"
-                title="10-digit mobile number" autocomplete="tel">
-            </div>
+        <!-- Right side: CTA card that opens the shared modal -->
+        <div class="enquiry__cta-card">
+          <div class="enquiry__cta-inner">
+            <div class="enquiry__cta-icon">&#128204;</div>
+            <h3 class="enquiry__cta-title">Book your free 30-min demo</h3>
+            <p class="enquiry__cta-sub">Share a few details and we'll prepare a personalised walkthrough with your live leads — usually within 15 minutes.</p>
+            <ul class="enquiry__cta-bullets">
+              <li>&#10003;&nbsp; Free setup &amp; onboarding support</li>
+              <li>&#10003;&nbsp; No credit card required</li>
+              <li>&#10003;&nbsp; Quote tailored to your team size</li>
+            </ul>
+            <button type="button" class="btn btn--primary btn--lg btn--block ncrm-modal-open" data-modal-title="Book Your Free Demo" data-modal-sub="Share a few details and we'll arrange a personalised 30-minute walkthrough within 15 minutes." data-track="demo" style="margin-top:28px">
+              Book Free Demo &amp; Get Quote &#8599;
+            </button>
+            <p style="font-size:.78rem;color:var(--muted,#6b7280);text-align:center;margin-top:12px">&#128274; No spam. Confidential under our <a href="privacy-policy.html" style="color:inherit;text-decoration:underline">Privacy Policy</a>.</p>
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-field">
-            <label for="enquiry-email">Work Email <span class="req">*</span></label>
-            <input type="email" id="enquiry-email" name="email" required placeholder="rahul@company.com"
-              autocomplete="email">
-          </div>
-          <div class="form-field">
-            <label for="enquiry-company">Company / Project Name <span class="req">*</span></label>
-            <input type="text" id="enquiry-company" name="company" required placeholder="e.g. Skyline Realty">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-field">
-            <label for="enquiry-role">Business Type</label>
-            <select id="enquiry-role" name="role">
-              <option value="" disabled selected>Select your business type</option>
-              <option value="Developer">Real Estate Developer</option>
-              <option value="Mandate Firm">Mandate Sales Firm</option>
-              <option value="Channel Partner">Channel Partner / Broker</option>
-              <option value="Marketing Agency">Marketing Agency</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="enquiry-team">Sales Team Size</label>
-            <select id="enquiry-team" name="team_size">
-              <option value="" disabled selected>Select team size</option>
-              <option value="1-5">1 &ndash; 5 salespeople</option>
-              <option value="6-15">6 &ndash; 15 salespeople</option>
-              <option value="16-50">16 &ndash; 50 salespeople</option>
-              <option value="50+">50+ salespeople</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-field">
-          <label for="enquiry-location">City / Location <span>(Optional)</span></label>
-          <input type="text" id="enquiry-location" name="location" placeholder="e.g. Pune, Mumbai, Bangalore"
-            autocomplete="address-level2">
-        </div>
-
-        <div class="form-field">
-          <label for="enquiry-message">What are you looking to improve? <span>(Optional)</span></label>
-          <textarea id="enquiry-message" name="message" rows="3"
-            placeholder="e.g. We get 250 leads/month from Meta and want to reduce lead leakage and automate WhatsApp..."></textarea>
-        </div>
-
-        <button type="submit" class="btn btn--primary btn--lg btn--block enquiry__submit">
-          <span>Request Free Demo</span> &#8599;
-        </button>
-
-        <p class="enquiry__note">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-          </svg>
-          No spam, ever. Your details are strictly confidential under our <a href="privacy-policy.html">Privacy
-            Policy</a>.
-        </p>
-        </form>
-
-        <div class="enquiry__success" id="enquiry-success" hidden aria-live="polite">
-          <div class="enquiry__success-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#12804a" stroke-width="2.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 6L9 17l-5-5" />
-            </svg>
-          </div>
-          <h4 class="enquiry__success-title">Enquiry Received!</h4>
-          <p class="enquiry__success-msg" id="enquiry-success-text">Thank you. Our sales intelligence specialist will
-            reach out to you within 15 minutes.</p>
-          <div class="enquiry__success-action">
-            <a class="btn btn--line btn--sm" id="enquiry-wa-continue" href="https://wa.me/918329984679" target="_blank"
-              rel="noopener">
-              <span>Need an instant answer? Chat on WhatsApp &#8599;</span>
-            </a>
-          </div>
-        </div>
-      </div>
       </div>
     </section>
 
@@ -1440,56 +1354,73 @@
   </aside>
 </body>
 
-<!-- ============ Get Quote Modal ============ -->
-<div id="quote-modal-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;backdrop-filter:blur(2px)" hidden></div>
-<div id="quote-modal" role="dialog" aria-modal="true" aria-labelledby="quote-modal-title" hidden
-  style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1001;width:min(96vw,560px);max-height:90vh;overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,.22);padding:36px 32px 32px">
-  <button id="quote-modal-close" type="button" aria-label="Close"
-    style="position:absolute;top:16px;right:16px;border:none;background:none;font-size:1.5rem;cursor:pointer;color:#555;line-height:1">&times;</button>
-  <p style="font-size:.72rem;letter-spacing:.13em;font-weight:800;text-transform:uppercase;color:var(--green,#00a885);margin-bottom:8px">Get a Personalised Quote</p>
-  <h2 id="quote-modal-title" style="font-size:1.35rem;font-weight:800;margin-bottom:4px;color:#0d1b2a">Tell us about your team</h2>
-  <p style="font-size:.88rem;color:#5a6478;margin-bottom:24px">We'll prepare a quote tailored to your team size, business type and goals &mdash; usually within 15 minutes.</p>
+<!-- ============ Universal Contact Modal ============ -->
+<div id="ncrm-backdrop" aria-hidden="true" style="display:none;position:fixed;inset:0;background:rgba(10,18,30,.6);z-index:9000;backdrop-filter:blur(3px)"></div>
 
-  <div id="quote-alert" role="alert" style="display:none;background:#fef2f2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:10px 14px;font-size:.85rem;margin-bottom:16px"></div>
+<div id="ncrm-modal" role="dialog" aria-modal="true" aria-labelledby="ncrm-modal-title" hidden
+  style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9001;width:min(96vw,580px);max-height:92vh;overflow-y:auto;background:#fff;border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,.28);font-family:inherit">
 
-  <form id="quote-form" novalidate>
-    <input type="hidden" name="bot-field" style="display:none">
+  <!-- Modal header -->
+  <div style="background:linear-gradient(135deg,#0d1b2a 0%,#12402e 100%);border-radius:20px 20px 0 0;padding:28px 32px 24px;position:relative">
+    <button id="ncrm-modal-close" type="button" aria-label="Close dialog"
+      style="position:absolute;top:16px;right:16px;width:32px;height:32px;border:none;background:rgba(255,255,255,.12);border-radius:50%;font-size:1.1rem;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .2s"
+      onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">&times;</button>
+    <p id="ncrm-modal-kicker" style="font-size:.68rem;letter-spacing:.15em;font-weight:800;text-transform:uppercase;color:#6be1c0;margin-bottom:6px">Book a Demo &middot; Get a Quote</p>
+    <h2 id="ncrm-modal-title" style="font-size:1.3rem;font-weight:800;color:#fff;margin:0 0 4px">Talk to our team</h2>
+    <p id="ncrm-modal-sub" style="font-size:.85rem;color:rgba(255,255,255,.65);margin:0">We'll reach out within 15 minutes with a personalised walkthrough.</p>
+  </div>
 
-    <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-      <div class="form-field">
-        <label for="qm-name" style="display:block;font-size:.8rem;font-weight:600;margin-bottom:4px">Full Name <span style="color:#e53e3e">*</span></label>
-        <input type="text" id="qm-name" name="name" required placeholder="e.g. Rahul Sharma" autocomplete="name"
-          style="width:100%;padding:9px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:.9rem;box-sizing:border-box">
+  <!-- Alert box -->
+  <div id="ncrm-alert" role="alert" style="display:none;background:#fef2f2;border-left:4px solid #f87171;color:#991b1b;padding:10px 16px;font-size:.85rem;margin:16px 24px 0;border-radius:6px"></div>
+
+  <!-- Form body -->
+  <form id="ncrm-form" novalidate style="padding:24px 32px 28px">
+    <input type="hidden" name="bot-field" style="position:absolute;opacity:0;pointer-events:none;height:0">
+    <input type="hidden" id="ncrm-source" name="source" value="Contact Modal">
+
+    <!-- Row 1: Name + Phone -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div>
+        <label for="ncrm-name" style="display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:5px">Full Name <span style="color:#e53e3e">*</span></label>
+        <input type="text" id="ncrm-name" name="name" required placeholder="e.g. Rahul Sharma" autocomplete="name"
+          style="width:100%;padding:10px 13px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:.9rem;font-family:inherit;box-sizing:border-box;transition:border-color .15s;outline:none"
+          onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
       </div>
-      <div class="form-field">
-        <label for="qm-phone" style="display:block;font-size:.8rem;font-weight:600;margin-bottom:4px">Phone <span style="color:#e53e3e">*</span></label>
-        <div style="display:flex;align-items:center;border:1.5px solid #d1d5db;border-radius:8px;overflow:hidden">
-          <span style="padding:9px 10px;background:#f3f4f6;font-size:.9rem;white-space:nowrap;border-right:1.5px solid #d1d5db">+91</span>
-          <input type="tel" id="qm-phone" name="phone" required placeholder="98200 00000" pattern="[0-9]{10}" autocomplete="tel"
-            style="flex:1;padding:9px 12px;border:none;font-size:.9rem;min-width:0">
+      <div>
+        <label for="ncrm-phone" style="display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:5px">Phone Number <span style="color:#e53e3e">*</span></label>
+        <div style="display:flex;border:1.5px solid #e5e7eb;border-radius:9px;overflow:hidden;transition:border-color .15s" id="ncrm-phone-wrap"
+          onfocusin="this.style.borderColor='#00a885'" onfocusout="this.style.borderColor='#e5e7eb'">
+          <span style="padding:10px 11px;background:#f9fafb;font-size:.88rem;font-weight:600;color:#374151;white-space:nowrap;border-right:1.5px solid #e5e7eb">+91</span>
+          <input type="tel" id="ncrm-phone" name="phone" required placeholder="98200 00000" pattern="[0-9]{10}" autocomplete="tel"
+            style="flex:1;padding:10px 12px;border:none;font-size:.9rem;font-family:inherit;min-width:0;outline:none;background:transparent">
         </div>
       </div>
     </div>
 
-    <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-      <div class="form-field">
-        <label for="qm-email" style="display:block;font-size:.8rem;font-weight:600;margin-bottom:4px">Work Email</label>
-        <input type="email" id="qm-email" name="email" placeholder="rahul@company.com" autocomplete="email"
-          style="width:100%;padding:9px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:.9rem;box-sizing:border-box">
+    <!-- Row 2: Email + Company -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div>
+        <label for="ncrm-email" style="display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:5px">Work Email <span style="color:#e53e3e">*</span></label>
+        <input type="email" id="ncrm-email" name="email" required placeholder="rahul@company.com" autocomplete="email"
+          style="width:100%;padding:10px 13px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:.9rem;font-family:inherit;box-sizing:border-box;transition:border-color .15s;outline:none"
+          onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
       </div>
-      <div class="form-field">
-        <label for="qm-company" style="display:block;font-size:.8rem;font-weight:600;margin-bottom:4px">Company / Project <span style="color:#e53e3e">*</span></label>
-        <input type="text" id="qm-company" name="company" required placeholder="e.g. Skyline Realty"
-          style="width:100%;padding:9px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:.9rem;box-sizing:border-box">
+      <div>
+        <label for="ncrm-company" style="display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:5px">Company / Project <span style="color:#e53e3e">*</span></label>
+        <input type="text" id="ncrm-company" name="company" required placeholder="e.g. Skyline Realty"
+          style="width:100%;padding:10px 13px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:.9rem;font-family:inherit;box-sizing:border-box;transition:border-color .15s;outline:none"
+          onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
       </div>
     </div>
 
-    <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-      <div class="form-field">
-        <label for="qm-role" style="display:block;font-size:.8rem;font-weight:600;margin-bottom:4px">Business Type</label>
-        <select id="qm-role" name="role"
-          style="width:100%;padding:9px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:.9rem;background:#fff;box-sizing:border-box">
-          <option value="" disabled selected>Select business type</option>
+    <!-- Row 3: Business Type + Team Size -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div>
+        <label for="ncrm-role" style="display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:5px">Business Type</label>
+        <select id="ncrm-role" name="role"
+          style="width:100%;padding:10px 13px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:.9rem;font-family:inherit;background:#fff;box-sizing:border-box;cursor:pointer;outline:none"
+          onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
+          <option value="">Select business type</option>
           <option value="Developer">Real Estate Developer</option>
           <option value="Mandate Firm">Mandate Sales Firm</option>
           <option value="Channel Partner">Channel Partner / Broker</option>
@@ -1497,11 +1428,12 @@
           <option value="Other">Other</option>
         </select>
       </div>
-      <div class="form-field">
-        <label for="qm-team" style="display:block;font-size:.8rem;font-weight:600;margin-bottom:4px">Sales Team Size</label>
-        <select id="qm-team" name="team_size"
-          style="width:100%;padding:9px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:.9rem;background:#fff;box-sizing:border-box">
-          <option value="" disabled selected>Select team size</option>
+      <div>
+        <label for="ncrm-team" style="display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:5px">Sales Team Size</label>
+        <select id="ncrm-team" name="team_size"
+          style="width:100%;padding:10px 13px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:.9rem;font-family:inherit;background:#fff;box-sizing:border-box;cursor:pointer;outline:none"
+          onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
+          <option value="">Select team size</option>
           <option value="1-5">1 &ndash; 5 salespeople</option>
           <option value="6-15">6 &ndash; 15 salespeople</option>
           <option value="16-50">16 &ndash; 50 salespeople</option>
@@ -1510,138 +1442,212 @@
       </div>
     </div>
 
-    <div class="form-field" style="margin-bottom:16px">
-      <label for="qm-location" style="display:block;font-size:.8rem;font-weight:600;margin-bottom:4px">City / Location</label>
-      <input type="text" id="qm-location" name="location" placeholder="e.g. Pune, Mumbai, Bangalore" autocomplete="address-level2"
-        style="width:100%;padding:9px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:.9rem;box-sizing:border-box">
+    <!-- City / Location -->
+    <div style="margin-bottom:16px">
+      <label for="ncrm-location" style="display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:5px">
+        City / Location <span style="font-weight:400;color:#9ca3af">(Optional)</span>
+      </label>
+      <input type="text" id="ncrm-location" name="location" placeholder="e.g. Pune, Mumbai, Bangalore" autocomplete="address-level2"
+        style="width:100%;padding:10px 13px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:.9rem;font-family:inherit;box-sizing:border-box;transition:border-color .15s;outline:none"
+        onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
     </div>
 
-    <div class="form-field" style="margin-bottom:24px">
-      <label for="qm-message" style="display:block;font-size:.8rem;font-weight:600;margin-bottom:4px">Anything specific? <span style="font-weight:400;color:#6b7280">(Optional)</span></label>
-      <textarea id="qm-message" name="message" rows="2" placeholder="e.g. We need WhatsApp automation for 12 users in Pune..."
-        style="width:100%;padding:9px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:.9rem;resize:vertical;box-sizing:border-box"></textarea>
+    <!-- Message -->
+    <div style="margin-bottom:24px">
+      <label for="ncrm-message" style="display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:5px">
+        Anything specific? <span style="font-weight:400;color:#9ca3af">(Optional)</span>
+      </label>
+      <textarea id="ncrm-message" name="message" rows="2" placeholder="e.g. We need WhatsApp automation for 12 salespeople in Pune..."
+        style="width:100%;padding:10px 13px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:.9rem;font-family:inherit;resize:vertical;box-sizing:border-box;transition:border-color .15s;outline:none"
+        onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
     </div>
 
-    <button id="quote-submit-btn" type="submit" class="btn btn--primary btn--block btn--lg">
-      <span>Get My Quote &#8599;</span>
+    <!-- Submit button -->
+    <button id="ncrm-submit" type="submit"
+      style="width:100%;padding:14px 24px;background:linear-gradient(135deg,#00c49a,#00a885);border:none;border-radius:10px;font-size:1rem;font-weight:700;font-family:inherit;color:#fff;cursor:pointer;transition:opacity .2s,transform .1s;letter-spacing:.01em"
+      onmouseover="this.style.opacity='.92'" onmouseout="this.style.opacity='1'"
+      onmousedown="this.style.transform='scale(.98)'" onmouseup="this.style.transform='scale(1)'">
+      <span id="ncrm-submit-label">Request Demo &amp; Get Quote &#8599;</span>
     </button>
-    <p style="font-size:.75rem;color:#9ca3af;text-align:center;margin-top:12px">&#128274; No spam. Your details are confidential.</p>
+    <p style="font-size:.74rem;color:#9ca3af;text-align:center;margin-top:10px">&#128274;&nbsp;No spam. Strictly confidential under our <a href="privacy-policy.html" style="color:#6b7280;text-decoration:underline">Privacy Policy</a>.</p>
   </form>
 
-  <div id="quote-success" hidden style="text-align:center;padding:16px 0">
-    <div style="font-size:2.5rem;margin-bottom:12px">&#127881;</div>
-    <h3 style="font-size:1.2rem;font-weight:800;color:#0d1b2a;margin-bottom:8px">Quote Request Received!</h3>
-    <p id="quote-success-msg" style="font-size:.9rem;color:#374151;margin-bottom:20px"></p>
-    <a id="quote-wa-link" href="https://wa.me/918329984679" target="_blank" rel="noopener" class="btn btn--line">
-      Chat on WhatsApp &#8599;
+  <!-- Success state -->
+  <div id="ncrm-success" hidden style="padding:40px 32px;text-align:center">
+    <div style="width:60px;height:60px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.8rem">&#10003;</div>
+    <h3 style="font-size:1.25rem;font-weight:800;color:#0d1b2a;margin-bottom:8px">We've got your details!</h3>
+    <p id="ncrm-success-msg" style="font-size:.92rem;color:#374151;margin-bottom:24px;line-height:1.6"></p>
+    <a id="ncrm-wa-link" href="https://wa.me/918329984679" target="_blank" rel="noopener"
+      style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:1.5px solid #25D366;border-radius:9px;color:#1a7a33;font-weight:600;font-size:.9rem;text-decoration:none;transition:background .2s"
+      onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='transparent'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+      Continue on WhatsApp &#8599;
     </a>
   </div>
 </div>
 
-
 <script>
-  /* ===== Get Quote Modal Controller ===== */
+  /* ===== Neeti CRM — Universal Modal Controller ===== */
   (function () {
     'use strict';
     var WEBHOOK = 'https://api.neeticrm.com/api/webhooks/inbound/ca23f30c7d0a6ca2aba977243a73301f39de81652d3099b0';
 
-    var modal = document.getElementById('quote-modal');
-    var backdrop = document.getElementById('quote-modal-backdrop');
-    var closeBtn = document.getElementById('quote-modal-close');
-    var form = document.getElementById('quote-form');
-    var alertBox = document.getElementById('quote-alert');
-    var submitBtn = document.getElementById('quote-submit-btn');
-    var successBox = document.getElementById('quote-success');
-    var successMsg = document.getElementById('quote-success-msg');
-    var waLink = document.getElementById('quote-wa-link');
+    var backdrop  = document.getElementById('ncrm-backdrop');
+    var modal     = document.getElementById('ncrm-modal');
+    var closeBtn  = document.getElementById('ncrm-modal-close');
+    var form      = document.getElementById('ncrm-form');
+    var alertBox  = document.getElementById('ncrm-alert');
+    var submitBtn = document.getElementById('ncrm-submit');
+    var submitLbl = document.getElementById('ncrm-submit-label');
+    var successBox= document.getElementById('ncrm-success');
+    var successMsg= document.getElementById('ncrm-success-msg');
+    var waLink    = document.getElementById('ncrm-wa-link');
+    var kicker    = document.getElementById('ncrm-modal-kicker');
+    var title     = document.getElementById('ncrm-modal-title');
+    var sub       = document.getElementById('ncrm-modal-sub');
+    var srcField  = document.getElementById('ncrm-source');
 
-    function openModal() {
+    function openModal(opts) {
+      opts = opts || {};
+      /* reset form to initial state */
+      if (successBox) successBox.hidden = true;
+      if (form) { form.hidden = false; form.reset(); }
+      if (alertBox) alertBox.style.display = 'none';
+      if (submitBtn) { submitBtn.disabled = false; }
+      if (submitLbl) submitLbl.textContent = 'Request Demo \u0026 Get Quote \u2197';
+
+      /* dynamic headings */
+      if (kicker) kicker.textContent = opts.kicker || 'Book a Demo \u00b7 Get a Quote';
+      if (title)  title.textContent  = opts.title  || 'Talk to our team';
+      if (sub)    sub.textContent    = opts.sub    || 'We\u2019ll reach out within 15 minutes with a personalised walkthrough.';
+      if (srcField) srcField.value   = opts.source || 'Contact Modal';
+
       if (!modal) return;
       modal.hidden = false;
-      document.body.classList.add('modal-open');
-      if (closeBtn) closeBtn.focus();
+      modal.style.display = 'block';
+      backdrop.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      setTimeout(function(){ if (closeBtn) closeBtn.focus(); }, 50);
     }
+
     function closeModal() {
       if (!modal) return;
       modal.hidden = true;
-      document.body.classList.remove('modal-open');
+      modal.style.display = 'none';
+      backdrop.style.display = 'none';
+      document.body.style.overflow = '';
     }
 
-    /* open triggers — main button, any .quote-modal-trigger element, nav link */
+    /* ---- Trigger detection ---- */
     document.addEventListener('click', function (e) {
-      var t = e.target.closest('#get-quote-btn, #nav-get-quote-btn, .quote-modal-trigger, [data-track="get-quote"]');
-      if (t) { e.preventDefault(); openModal(); }
+      /* close on backdrop */
+      if (e.target === backdrop) { closeModal(); return; }
+
+      var t = e.target.closest([
+        '.ncrm-modal-open',
+        '.quote-modal-trigger',
+        '#get-quote-btn',
+        '#nav-get-quote-btn',
+        '[data-track="get-quote"]'
+      ].join(','));
+
+      if (t) {
+        e.preventDefault();
+        openModal({
+          kicker: 'Get a Personalised Quote',
+          title:  t.dataset.modalTitle  || 'Get a Quote',
+          sub:    t.dataset.modalSub    || 'We\u2019ll prepare a quote tailored to your team within 15 minutes.',
+          source: t.dataset.modalSource || 'Get Quote Button'
+        });
+        return;
+      }
+
+      /* "Book Demo" anchors — intercept #enquiry links as modal opens */
+      var a = e.target.closest('a[href="#enquiry"], a[data-track="demo"]');
+      if (a) {
+        e.preventDefault();
+        openModal({
+          kicker: 'Book a Free Demo',
+          title:  'Book your 30-min demo',
+          sub:    'Share a few details and we\u2019ll arrange a personalised walkthrough within 15 minutes.',
+          source: 'Book Demo Button'
+        });
+        return;
+      }
     });
 
-    if (backdrop) backdrop.addEventListener('click', closeModal);
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-    /* close on Escape */
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal && !modal.hidden) closeModal();
     });
 
-    /* form submission */
+    /* ---- Form submit ---- */
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (alertBox) alertBox.style.display = 'none';
 
-        /* honeypot */
         var bot = form.elements['bot-field'];
         if (bot && bot.value) { closeModal(); return; }
 
-        var fd = new FormData(form);
-        var name = (fd.get('name') || '').toString().trim();
-        var phone = (fd.get('phone') || '').toString().trim();
+        var fd      = new FormData(form);
+        var name    = (fd.get('name')    || '').toString().trim();
+        var phone   = (fd.get('phone')   || '').toString().trim();
+        var email   = (fd.get('email')   || '').toString().trim();
         var company = (fd.get('company') || '').toString().trim();
 
-        if (!name || !phone || !company) {
+        var missing = [];
+        if (!name)    missing.push('Full Name');
+        if (!phone)   missing.push('Phone Number');
+        if (!email)   missing.push('Work Email');
+        if (!company) missing.push('Company');
+
+        if (missing.length) {
           if (alertBox) {
-            alertBox.textContent = 'Please fill in Name, Phone and Company.';
+            alertBox.textContent = 'Please fill in: ' + missing.join(', ') + '.';
             alertBox.style.display = 'block';
           }
           return;
         }
 
-        if (submitBtn) { submitBtn.disabled = true; submitBtn.firstElementChild.textContent = 'Sending…'; }
+        if (submitBtn) { submitBtn.disabled = true; }
+        if (submitLbl) submitLbl.textContent = 'Sending\u2026';
 
         /* Meta Pixel */
         if (typeof window.fbq === 'function') {
-          window.fbq('track', 'Lead', { content_name: 'Get Quote Form' });
+          window.fbq('track', 'Lead', { content_name: fd.get('source') || 'Contact Modal' });
         }
 
         var payload = {
-          name: name, full_name: name,
-          phone: phone, mobile: phone,
-          email: (fd.get('email') || '').toString().trim(),
-          company: company, company_name: company,
-          role: (fd.get('role') || '').toString().trim(),
-          team_size: (fd.get('team_size') || '').toString().trim(),
-          location: (fd.get('location') || '').toString().trim(),
-          city: (fd.get('location') || '').toString().trim(),
-          message: (fd.get('message') || '').toString().trim(),
-          notes: (fd.get('message') || '').toString().trim(),
-          source: 'Get Quote Modal',
-          form_name: 'get-quote',
+          name:       name,         full_name:    name,
+          phone:      phone,        mobile:       phone,
+          email:      email,
+          company:    company,      company_name: company,
+          role:       (fd.get('role')      || '').toString().trim(),
+          team_size:  (fd.get('team_size') || '').toString().trim(),
+          location:   (fd.get('location') || '').toString().trim(),
+          city:       (fd.get('location') || '').toString().trim(),
+          message:    (fd.get('message')  || '').toString().trim(),
+          notes:      (fd.get('message')  || '').toString().trim(),
+          source:     (fd.get('source')   || 'Contact Modal').toString(),
+          form_name:  'contact-modal',
           submitted_at: new Date().toISOString()
         };
 
         function showSuccess() {
-          form.hidden = true;
+          if (form) form.hidden = true;
           if (successBox) {
             successBox.hidden = false;
             if (successMsg) {
-              successMsg.textContent = 'Thank you, ' + name.split(' ')[0] + '! Our team will reach out to you on +91 ' + phone + ' within 15 minutes with a personalised quote.';
+              successMsg.textContent = 'Thank you, ' + name.split(' ')[0] + '! Our team will call you on +91\u00a0' + phone + ' within 15 minutes.';
             }
             if (waLink) {
-              var txt = 'Hi, I just requested a Neeti CRM quote (Name: ' + name + ', Phone: +91 ' + phone + ', Company: ' + company + '). Looking forward to hearing from you.';
+              var txt = 'Hi, I just filled the Neeti CRM form. Name: ' + name + ', Phone: +91 ' + phone + ', Company: ' + company + '. Looking forward to hearing from you!';
               waLink.href = 'https://wa.me/918329984679?text=' + encodeURIComponent(txt);
             }
           }
         }
 
-        /* Webhook */
         fetch(WEBHOOK, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -1650,10 +1656,7 @@
           if (!r.ok) throw new Error('HTTP ' + r.status);
           showSuccess();
         }).catch(function () {
-          /* Netlify fallback */
-          var p = new URLSearchParams();
-          fd.forEach(function (v, k) { p.append(k, v); });
-          fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: p.toString() }).finally(showSuccess);
+          showSuccess(); /* show success even if network fails */
         });
       });
     }
