@@ -1251,7 +1251,6 @@
             </button>
             <p style="font-size:.78rem;color:var(--muted,#6b7280);text-align:center;margin-top:12px">&#128274; No spam. Confidential under our <a href="privacy-policy.html" style="color:inherit;text-decoration:underline">Privacy Policy</a>.</p>
           </div>
-        </div>
 
       </div>
     </section>
@@ -1374,8 +1373,9 @@
   <div id="ncrm-alert" role="alert" style="display:none;background:#fef2f2;border-left:4px solid #f87171;color:#991b1b;padding:10px 16px;font-size:.85rem;margin:16px 24px 0;border-radius:6px"></div>
 
   <!-- Form body -->
-  <form id="ncrm-form" novalidate style="padding:24px 32px 28px">
-    <input type="hidden" name="bot-field" style="position:absolute;opacity:0;pointer-events:none;height:0">
+  <form id="ncrm-form" name="contact" data-netlify="true" netlify-honeypot="bot-field" novalidate style="padding:24px 32px 28px">
+    <input type="hidden" name="form-name" value="contact">
+    <input name="bot-field" style="position:absolute;opacity:0;pointer-events:none;height:0;width:0" tabindex="-1" autocomplete="off">
     <input type="hidden" id="ncrm-source" name="source" value="Contact Modal">
 
     <!-- Row 1: Name + Phone -->
@@ -1658,6 +1658,24 @@
         }).catch(function () {
           showSuccess(); /* show success even if network fails */
         });
+
+        /* Also post to Netlify Forms so submissions appear in the Netlify dashboard */
+        var netlifyData = new URLSearchParams();
+        netlifyData.append('form-name', 'contact');
+        netlifyData.append('name',      payload.name);
+        netlifyData.append('phone',     payload.phone);
+        netlifyData.append('email',     payload.email);
+        netlifyData.append('company',   payload.company);
+        netlifyData.append('role',      payload.role);
+        netlifyData.append('team_size', payload.team_size);
+        netlifyData.append('location',  payload.location);
+        netlifyData.append('message',   payload.message);
+        netlifyData.append('source',    payload.source);
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: netlifyData.toString()
+        }).catch(function () { /* silent — Netlify form is a bonus, not critical */ });
       });
     }
   })();
