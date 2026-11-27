@@ -1257,12 +1257,12 @@
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
                 <div>
                   <label for="enq-name" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Full Name <span style="color:#e53e3e">*</span></label>
-                  <input type="text" id="enq-name" name="name" required placeholder="Rahul Sharma" autocomplete="name"
+                  <input type="text" id="enq-name" name="name" required placeholder="e.g. Rahul Sharma" autocomplete="name"
                     style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;box-sizing:border-box;outline:none"
                     onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
                 </div>
                 <div>
-                  <label for="enq-phone" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Phone <span style="color:#e53e3e">*</span></label>
+                  <label for="enq-phone" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Phone Number <span style="color:#e53e3e">*</span></label>
                   <div style="display:flex;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden" id="enq-phone-wrap"
                     onfocusin="this.style.borderColor='#00a885'" onfocusout="this.style.borderColor='#e5e7eb'">
                     <span style="padding:9px 9px;background:#f9fafb;font-size:.82rem;font-weight:700;color:#374151;white-space:nowrap;border-right:1.5px solid #e5e7eb">+91</span>
@@ -1272,7 +1272,7 @@
                 </div>
               </div>
 
-              <!-- Email + Company -->
+              <!-- Work Email + Company -->
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
                 <div>
                   <label for="enq-email" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Work Email <span style="color:#e53e3e">*</span></label>
@@ -1281,21 +1281,21 @@
                     onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
                 </div>
                 <div>
-                  <label for="enq-company" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Company <span style="color:#e53e3e">*</span></label>
-                  <input type="text" id="enq-company" name="company" required placeholder="Skyline Realty"
+                  <label for="enq-company" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Company / Project Name <span style="color:#e53e3e">*</span></label>
+                  <input type="text" id="enq-company" name="company" required placeholder="e.g. Skyline Realty"
                     style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;box-sizing:border-box;outline:none"
                     onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
                 </div>
               </div>
 
-              <!-- Business Type + Team Size -->
+              <!-- Business Type + Sales Team Size -->
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
                 <div>
                   <label for="enq-role" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Business Type</label>
                   <select id="enq-role" name="role"
                     style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;background:#fff;box-sizing:border-box;outline:none;cursor:pointer"
                     onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
-                    <option value="">Select type</option>
+                    <option value="">Select business type</option>
                     <option value="Developer">Real Estate Developer</option>
                     <option value="Mandate Firm">Mandate Sales Firm</option>
                     <option value="Channel Partner">Channel Partner / Broker</option>
@@ -1304,11 +1304,11 @@
                   </select>
                 </div>
                 <div>
-                  <label for="enq-team" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Team Size</label>
+                  <label for="enq-team" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Sales Team Size</label>
                   <select id="enq-team" name="team_size"
                     style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;background:#fff;box-sizing:border-box;outline:none;cursor:pointer"
                     onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
-                    <option value="">Select size</option>
+                    <option value="">Select team size</option>
                     <option value="1-5">1 &ndash; 5</option>
                     <option value="6-15">6 &ndash; 15</option>
                     <option value="16-50">16 &ndash; 50</option>
@@ -1317,7 +1317,7 @@
                 </div>
               </div>
 
-              <!-- City / Location -->
+              <!-- City / Location (full width) -->
               <div style="margin-bottom:12px">
                 <label for="enq-location" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">City / Location <span style="font-weight:400;color:#9ca3af">(Optional)</span></label>
                 <input type="text" id="enq-location" name="location" placeholder="e.g. Pune, Mumbai, Bangalore" autocomplete="address-level2"
@@ -1325,9 +1325,9 @@
                   onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'">
               </div>
 
-              <!-- Message -->
+              <!-- Message (full width) -->
               <div style="margin-bottom:16px">
-                <label for="enq-message" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">What would you like to improve? <span style="font-weight:400;color:#9ca3af">(Optional)</span></label>
+                <label for="enq-message" style="display:block;font-size:.78rem;font-weight:600;color:#374151;margin-bottom:4px">Anything specific you'd like to know? <span style="font-weight:400;color:#9ca3af">(Optional)</span></label>
                 <textarea id="enq-message" name="message" rows="2" placeholder="e.g. We get 250 leads/month from Meta and want to reduce leakage..."
                   style="width:100%;padding:9px 11px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;resize:vertical;box-sizing:border-box;outline:none"
                   onfocus="this.style.borderColor='#00a885'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
