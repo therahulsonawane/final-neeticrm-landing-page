@@ -3,6 +3,7 @@
 // Copy, FAQs, screenshots and schema live in the PAGES list below. Edit it and re-run;
 // do not hand-edit the generated files. Also rewrites sitemap.xml.
 const fs = require('fs');
+const { seoTags, applyStatic } = require('./seo-tags.cjs');
 const path = require('path');
 const root = path.resolve(__dirname, '..');
 const SITE = 'https://neeticrm.com';
@@ -304,7 +305,7 @@ function render(p) {
   const jsonld = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'WebPage', '@id': url + '#webpage', url, name: p.title, description: p.desc, isPartOf: { '@id': SITE + '/#website' }, about: { '@id': SITE + '/#app' }, dateModified: TODAY, inLanguage: 'en-IN', primaryImageOfPage: { '@type': 'ImageObject', url: SITE + '/og-image.jpg', width: 1200, height: 630 } },
+      { '@type': 'WebPage', '@id': url + '#webpage', url, name: p.title, description: p.desc, isPartOf: { '@id': SITE + '/#website' }, about: { '@id': SITE + '/#app' }, dateModified: TODAY, inLanguage: 'en-IN', primaryImageOfPage: { '@type': 'ImageObject', url: SITE + '/assets/img/og/' + p.slug + '.jpg', width: 1200, height: 630 } },
       { '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
         { '@type': 'ListItem', position: 2, name: p.label, item: url } ] },
@@ -317,27 +318,32 @@ function render(p) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  ${seoTags()}
   <title>${esc(p.title)}</title>
   <meta name="description" content="${esc(p.desc)}">
   <link rel="canonical" href="${url}">
+  <link rel="alternate" hreflang="en-IN" href="${url}">
+  <link rel="alternate" hreflang="x-default" href="${url}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="theme-color" content="#111827">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Neeti CRM">
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="${url}">
   <meta property="og:title" content="${esc(p.title)}">
   <meta property="og:description" content="${esc(p.desc)}">
-  <meta property="og:image" content="${SITE}/og-image.jpg">
+  <meta property="og:image" content="${SITE}/assets/img/og/${p.slug}.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Neeti CRM - AI-Powered Sales Intelligence System for Real Estate">
+  <meta property="og:image:alt" content="${esc(p.h1)} - Neeti CRM">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(p.title)}">
   <meta name="twitter:description" content="${esc(p.desc)}">
-  <meta name="twitter:image" content="${SITE}/og-image.jpg">
+  <meta name="twitter:image" content="${SITE}/assets/img/og/${p.slug}.jpg">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
@@ -396,10 +402,21 @@ const urls = [
   ['/', '1.0'], ['/bookdemo', '0.8'],
   ...PAGES.map((p) => ['/' + p.slug + '/', p.pricing ? '0.9' : '0.8']),
   ['/blog/', '0.7'], ...require('./build-blog.cjs').posts.map((b) => ['/blog/' + b.slug + '/', '0.7']),
-  ['/sales_hiring/', '0.3'], ['/security.html', '0.3'], ['/privacy-policy.html', '0.2'],
+  ['/security.html', '0.3'], ['/privacy-policy.html', '0.2'],
   ['/terms-of-service.html', '0.2'], ['/refund-policy.html', '0.2']
 ];
 const xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   urls.map(([u, pr]) => `  <url><loc>${SITE}${u}</loc>${pr >= '0.7' ? `<lastmod>${TODAY}</lastmod>` : ''}<priority>${pr}</priority></url>`).join('\n') + '\n</urlset>\n';
 fs.writeFileSync(path.join(root, 'sitemap.xml'), xml);
 console.log('wrote sitemap.xml');
+
+// Share-image manifest: scripts/make-og.py renders one 1200x630 card per entry into assets/img/og/.
+const blogMod = require('./build-blog.cjs');
+const cards = [
+  ...PAGES.map((p) => ({ file: p.slug, kicker: p.badge, title: p.h1 })),
+  { file: 'blog', kicker: 'The Neeti CRM blog', title: 'Real estate sales, explained plainly' },
+  ...blogMod.posts.map((b) => ({ file: 'blog-' + b.slug, kicker: b.category, title: b.h1 || b.title }))
+];
+fs.writeFileSync(path.join(__dirname, 'og-cards.json'), JSON.stringify(cards, null, 2) + '\n');
+console.log('wrote og-cards.json (' + cards.length + ' cards)');
+console.log('seo tags applied to', applyStatic(), 'hand-written pages');

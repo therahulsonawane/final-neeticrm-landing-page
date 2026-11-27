@@ -2,6 +2,7 @@
 // (which calls this) or directly: `node scripts/build-blog.cjs`.
 // Post format: frontmatter (title, slug, desc, category, read, image, faq lines "Q || A") then Markdown-lite body.
 const fs = require('fs');
+const { seoTags } = require('./seo-tags.cjs');
 const path = require('path');
 const { SITE_URL, esc, navHtml, footerHtml, ctaHtml, frame, SIGNUP } = Object.assign({ SITE_URL: 'https://neeticrm.com' }, require('./shell.cjs'));
 const root = path.resolve(__dirname, '..');
@@ -55,31 +56,36 @@ const posts = fs.readdirSync(path.join(root, 'content/blog')).filter((f) => f.en
   .map((f) => Object.assign(parse(path.join(root, 'content/blog', f)), { file: f }))
   .sort((a, b) => Number(a.order) - Number(b.order));
 
-const head = (title, desc, url, type, extra = '') => `<!doctype html>
+const head = (title, desc, url, type, extra = '', img = 'blog') => `<!doctype html>
 <html lang="en-IN" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  ${seoTags()}
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}">
   <link rel="canonical" href="${url}">
+  <link rel="alternate" hreflang="en-IN" href="${url}">
+  <link rel="alternate" hreflang="x-default" href="${url}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="theme-color" content="#111827">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="${type}">
   <meta property="og:site_name" content="Neeti CRM">
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="${url}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(desc)}">
-  <meta property="og:image" content="${SITE}/og-image.jpg">
+  <meta property="og:image" content="${SITE}/assets/img/og/${img}.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Neeti CRM - AI-Powered Sales Intelligence System for Real Estate">
+  <meta property="og:image:alt" content="${esc(title)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(desc)}">
-  <meta name="twitter:image" content="${SITE}/og-image.jpg">${extra}
+  <meta name="twitter:image" content="${SITE}/assets/img/og/${img}.jpg">${extra}
   <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
@@ -107,14 +113,14 @@ function renderPost(p, i) {
   const next = [1, 2, 3].map((k) => related[(i + k - 1) % related.length]);
   const faq = p.faq.length ? `<section class="bl-faq" aria-labelledby="bl-faq-t"><h2 id="bl-faq-t">Frequently asked questions</h2>${p.faq.map((f, n) => `<details${n === 0 ? ' open' : ''}><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join('')}</section>` : '';
   const graph = [
-    { '@type': 'BlogPosting', '@id': url + '#post', headline: p.title, description: p.desc, url, mainEntityOfPage: url, datePublished: TODAY, dateModified: TODAY, inLanguage: 'en-IN', wordCount: words, articleSection: p.category, image: SITE + '/og-image.jpg', author: { '@type': 'Organization', name: AUTHOR, url: SITE + '/' }, publisher, isPartOf: { '@type': 'Blog', '@id': SITE + '/blog/#blog' } },
+    { '@type': 'BlogPosting', '@id': url + '#post', headline: p.title, description: p.desc, url, mainEntityOfPage: url, datePublished: TODAY, dateModified: TODAY, inLanguage: 'en-IN', wordCount: words, articleSection: p.category, image: SITE + '/assets/img/og/blog-' + p.slug + '.jpg', author: { '@type': 'Organization', name: AUTHOR, url: SITE + '/' }, publisher, isPartOf: { '@type': 'Blog', '@id': SITE + '/blog/#blog' } },
     { '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
       { '@type': 'ListItem', position: 2, name: 'Blog', item: SITE + '/blog/' },
       { '@type': 'ListItem', position: 3, name: p.title, item: url } ] }
   ];
   if (p.faq.length) graph.push({ '@type': 'FAQPage', mainEntity: p.faq.map((f) => ({ '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } })) });
-  return head(p.title + ' | Neeti CRM', p.desc, url, 'article', `\n  <meta property="article:published_time" content="${TODAY}">\n  <meta property="article:section" content="${esc(p.category)}">`)
+  return head(p.title + ' | Neeti CRM', p.desc, url, 'article', `\n  <meta property="article:published_time" content="${TODAY}">\n  <meta property="article:section" content="${esc(p.category)}">`, 'blog-' + p.slug)
     + '\n' + ld({ '@context': 'https://schema.org', '@graph': graph }) + `
 <body>
   <a class="skip" href="#main">Skip to content</a>

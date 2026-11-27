@@ -71,3 +71,11 @@ The seven pages in `real-estate-*/`, `crm-for-*/`, `whatsapp-crm-for-real-estate
 ## Blog
 
 `/blog/` and the ten posts under `/blog/<slug>/` are generated from Markdown files in `content/blog/` by `scripts/build-blog.cjs` (run automatically by `node scripts/build-pages.cjs`, which also adds them to `sitemap.xml`). To add a post, copy an existing file, change the frontmatter (`order`, `slug`, `title`, `desc`, `category`, `read`, `excerpt`, `faq` lines written as `Question || Answer`) and write the body. Supported body syntax: `##` / `###` headings, `-` and `1.` lists, `>` quotes, `|` tables, `[text](/url/)` links, `**bold**`, `{{fig:dashboard|caption}}` for a product screenshot (keys: dashboard, leads, command, whatsapp, automation, project, team) and `{{cta|Heading|Sub-text}}` for an inline demo banner. Each post gets BlogPosting, BreadcrumbList and FAQPage schema, a contents list, the shared enquiry form and links back to the product pages.
+
+## Share images
+
+Every generated page uses its own 1200x630 card from `assets/img/og/<slug>.jpg` (home page keeps `og-image.jpg`). `node scripts/build-pages.cjs` writes `scripts/og-cards.json`; after adding or retitling a page or post, run `python3 scripts/make-og.py` (needs Python Playwright and Chrome) to regenerate the cards.
+
+## Search Console and Analytics
+
+Put the Search Console verification token (only the `content="..."` value) in `site.config.json` as `gscVerification`, and the Google Analytics 4 ID (`G-XXXXXXXXXX`) as `ga4Id`, then run `node scripts/build-pages.cjs`. The tags are added to every generated page and to the marked `seo-tags` block in each hand-written page. Empty values add nothing. After deploying, verify in Search Console and submit `https://neeticrm.com/sitemap.xml`.
